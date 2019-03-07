@@ -1,3 +1,1 @@
-module.exports = {
-  mongoURL: 'mongodb://localhost:27017/sandbox'
-}
+export const mongoURL = 'mongodb://localhost:27017/sandbox';
