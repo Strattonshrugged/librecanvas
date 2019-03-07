@@ -38,8 +38,4 @@ userSchema.methods.generateJwt = function() {
   }, "MY_SECRET"); // DO NOT KEEP YOUR SECRET IN THE CODE! (process.env.SHOELACES_USER_SECRET_KEY)
 };
 
-mongoose.model('User', userSchema);
-
-// from Jesse:
-// var User = mongoose.model('User', userSchema);
-// module.exports = User;
+export default mongoose.model('User', userSchema);
