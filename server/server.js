@@ -4,7 +4,10 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import * as mongoConfig from './config/config';
 import passport from 'passport';
-import routes from './routes/index'
+import routes from './routes/index';
+
+// DO NOT remove
+import passportConfig from './config/passport';
 
 // Fixes for deprecation warnings
 /* 
