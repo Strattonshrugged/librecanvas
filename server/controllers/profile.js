@@ -13,4 +13,4 @@ export function profileRead(req, res) {
         res.status(200).json(user);
       });
   }
-};
+}

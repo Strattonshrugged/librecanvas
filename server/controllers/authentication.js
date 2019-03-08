@@ -1,11 +1,10 @@
 import passport from 'passport';
-import mongoose from 'mongoose';
 import User from '../models/User';
 
-var sendJSONresponse = function(res, status, content) {
+/*var sendJSONresponse = function(res, status, content) {
   res.status(status);
   res.json(content);
-};
+};*/
 
 export function register(req, res) {
 
@@ -17,22 +16,37 @@ export function register(req, res) {
   // }
 
   var user = new User();
-
   user.name = req.body.name;
   user.email = req.body.email;
-
   user.setPassword(req.body.password);
 
   user.save(function(err) {
+    if ( err && err.code === 11000 ) {
+      res.status(409);
+      res.json({
+        "message" : "User already exists"
+      });
+      return;
+    }
+    
+    if (err) {
+      console.log(err);
+      res.status(400);
+      res.json({
+        "message" : "Bad Request"
+      });
+      return;
+    }
+    
     var token;
     token = user.generateJwt();
     res.status(200);
     res.json({
       "token" : token
     });
+    
   });
-
-};
+}
 
 export function login(req, res) {
 
