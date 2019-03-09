@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
+import { Role } from '../../../models/role';
 
 @Component({
   selector: 'app-user-edit',
@@ -39,6 +40,7 @@ export class UserEditComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { return this.editForm.controls; }
+  get Role() { return Role; }
   
   editUser() {
     if (this.editForm.invalid) {
