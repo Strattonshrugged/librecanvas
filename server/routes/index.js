@@ -21,5 +21,8 @@ router.post('/login', ctrlAuth.login);
 
 // admin
 router.get('/users', auth, ctrlAdmin.getAllUsers);
+router.get('/users/:id', auth, ctrlAdmin.getUserById);
+router.post('/users/edit/:id', auth, ctrlAdmin.editUser);
+router.get('/users/delete/:id', auth, ctrlAdmin.deleteUser);
 
 export default router;

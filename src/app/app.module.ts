@@ -14,6 +14,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminComponent } from './components/admin/admin.component';
+import { UserEditComponent } from './components/user/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AdminComponent } from './components/admin/admin.component';
     LoginComponent,
     ProfileComponent,
     RegisterComponent,
-    AdminComponent
+    AdminComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@
         <th scope="col">Name</th>
         <th scope="col">Email</th>
         <th scope="col">Role</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,8 @@
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
         <td>{{user.role}}</td>
+        <td><button class="btn btn-success" type="button" (click)="editUser(user._id)">Edit</button>
+        <button class="btn btn-danger" type="button" (click)="deleteUser(user._id)">Delete</button></td>
       </tr>
     </tbody>
   </table>

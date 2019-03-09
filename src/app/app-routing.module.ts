@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { UserEditComponent } from './components/user/user-edit/user-edit.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { Role } from './models/role';
 
@@ -14,7 +15,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService], data: { roles: [Role.Admin] } }
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService], data: { roles: [Role.Admin] } },
+  { path: 'users', component: AdminComponent, canActivate: [AuthGuardService], data: { roles: [Role.Admin] } },
+  { path: 'users/edit/:id', component: UserEditComponent, canActivate: [AuthGuardService], data: { roles: [Role.Admin] } }
 ];
 
 @NgModule({

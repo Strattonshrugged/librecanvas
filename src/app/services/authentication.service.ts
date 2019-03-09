@@ -3,15 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
-export interface UserDetails {
-  _id: string;
-  email: string;
-  name: string;
-  role: string;
-  exp: number;
-  iat: number;
-}
+import { UserDetails } from '../models/user';
 
 interface TokenResponse {
   token: string;
