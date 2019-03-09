@@ -7,10 +7,8 @@ export function profileRead(req, res) {
       "message" : "UnauthorizedError: private profile"
     });
   } else {
-    User
-      .findById(req.payload._id)
-      .exec(function(err, user) {
-        res.status(200).json(user);
-      });
+    User.findById(req.payload._id).exec(function(err, user) {
+      res.status(200).json(user);
+    });
   }
 }

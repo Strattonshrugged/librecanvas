@@ -24,7 +24,7 @@
           <input id="password" name="password" type="password" class="form-control" formControlName="password" placeholder="Password" >
           <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)" class="alert alert-danger">
             <div *ngIf="f.password.errors.required">Password is required.</div>
-            <div *ngIf="f.password.errors.minlength">Password must be at least 5 characters</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 4 characters</div>
           </div>
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Register!</button>

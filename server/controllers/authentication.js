@@ -18,6 +18,7 @@ export function register(req, res) {
   var user = new User();
   user.name = req.body.name;
   user.email = req.body.email;
+  user.role = req.body.role;
   user.setPassword(req.body.password);
 
   user.save(function(err) {

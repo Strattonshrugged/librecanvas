@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService, TokenPayload } from '../../authentication.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Role } from '../../models/role';
 
 @Component({
   selector: 'app-register',
@@ -12,13 +13,18 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   error = '';
   
-  constructor(private auth: AuthenticationService, private router: Router, private fb: FormBuilder) {}
+  constructor(private auth: AuthenticationService, private router: Router, private fb: FormBuilder) {
+    // redirect to home if already logged in
+    if (this.auth.isLoggedIn()) { 
+        this.router.navigate(['/']);
+    }
+  }
 
   ngOnInit() {
     this.registerForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5)]]
+      password: ['', [Validators.required, Validators.minLength(4)]]
     });
   }
   
@@ -38,7 +44,8 @@ export class RegisterComponent implements OnInit {
     var credentials: TokenPayload = {
       email: this.f.email.value,
       name: this.f.name.value,
-      password: this.f.password.value
+      password: this.f.password.value,
+      role: Role.User
     };
     
     this.auth.register(credentials).subscribe(() => {

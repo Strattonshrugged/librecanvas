@@ -14,11 +14,8 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   error = '';
   
-  constructor(private auth: AuthenticationService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private fb: FormBuilder) {
-    
+  constructor(private auth: AuthenticationService, private route: ActivatedRoute,
+              private router: Router, private fb: FormBuilder) {
     // redirect to home if already logged in
     if (this.auth.isLoggedIn()) { 
         this.router.navigate(['/']);
