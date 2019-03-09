@@ -1,8 +1,22 @@
 <h1>Admin</h1>
 <p>This page can only be accessed by administrators.</p>
 <div>
-    All users from secure (admin only) api end point:
-    <ul>
-        <li *ngFor="let user of users">{{user.name}} {{user.email}}</li>
-    </ul>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th scope="row">{{user._id}}</th>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.role}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

@@ -13,6 +13,7 @@ export class AuthGuardService implements CanActivate {
       // check if route is restricted by role
       if (route.data.roles && route.data.roles.indexOf(this.auth.getUserDetails().role) === -1) {
         // role not authorised so redirect to home page
+        console.warn(this.auth.getUserDetails().role + ' role not authorized to access ' + route);
         this.router.navigate(['/']);
         return false;
       }
@@ -22,6 +23,7 @@ export class AuthGuardService implements CanActivate {
     }
   
     // not logged in so redirect to login page with the return url
+    console.warn('Must be logged in to access ' + route);
     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
     return false;
   }
