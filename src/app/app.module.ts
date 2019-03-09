@@ -12,7 +12,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
-import { AuthGuardService } from './services/auth-guard.service';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
 
@@ -35,7 +34,6 @@ import { UserEditComponent } from './components/user/user-edit/user-edit.compone
   ],
   providers: [
     AuthenticationService, 
-    AuthGuardService,
     UserService
   ],
   bootstrap: [AppComponent]

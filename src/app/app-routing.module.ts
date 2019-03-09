@@ -7,17 +7,18 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 import { Role } from './models/role';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService], data: { roles: [Role.Admin] } },
-  { path: 'users', component: AdminComponent, canActivate: [AuthGuardService], data: { roles: [Role.Admin] } },
-  { path: 'users/edit/:id', component: UserEditComponent, canActivate: [AuthGuardService], data: { roles: [Role.Admin] } }
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminGuard], data: { roles: [Role.Admin] } },
+  { path: 'users', component: AdminComponent, canActivate: [AuthGuard, AdminGuard], data: { roles: [Role.Admin] } },
+  { path: 'users/edit/:id', component: UserEditComponent, canActivate: [AuthGuard, AdminGuard], data: { roles: [Role.Admin] } }
 ];
 
 @NgModule({
