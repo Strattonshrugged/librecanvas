@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -63,7 +63,7 @@ export class AuthenticationService {
     }
   }
 
-  private request(method: 'post'|'get', type: 'login'|'register'|'profile', user?: TokenPayload): Observable<any> {
+  private request(method: 'post'|'get', type: 'login'|'register'|'profile'|'users', user?: TokenPayload): Observable<any> {
     let base;
 
     if (method === 'post') {
@@ -94,6 +94,10 @@ export class AuthenticationService {
 
   public profile(): Observable<any> {
     return this.request('get', 'profile');
+  }
+  
+  public users(): Observable<any> {
+    return this.request('get', 'users');
   }
 
   public logout(): void {

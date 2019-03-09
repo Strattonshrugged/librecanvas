@@ -6,7 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { AuthGuardService } from './auth-guard.service';
+import { AuthGuardService } from './services/auth-guard.service';
 import { Role } from './models/role';
 
 const routes: Routes = [

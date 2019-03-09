@@ -80,4 +80,4 @@ export function login(req, res) {
     }
   })(req, res);
 
-};
+}

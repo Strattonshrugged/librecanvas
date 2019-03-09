@@ -10,6 +10,7 @@ var auth = jwt({
 
 var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
+var ctrlAdmin = require('../controllers/admin');
 
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);
@@ -18,4 +19,7 @@ router.get('/profile', auth, ctrlProfile.profileRead);
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
-export default router
+// admin
+router.get('/users', auth, ctrlAdmin.getAllUsers);
+
+export default router;
