@@ -17,7 +17,13 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthenticationService,
               private route: ActivatedRoute,
               private router: Router,
-              private fb: FormBuilder) {}
+              private fb: FormBuilder) {
+    
+    // redirect to home if already logged in
+    if (this.auth.isLoggedIn()) { 
+        this.router.navigate(['/']);
+    }
+  }
 
   ngOnInit() {
     this.loginForm = this.fb.group({

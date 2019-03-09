@@ -1,24 +1,19 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { AuthenticationService, TokenPayload } from './authentication.service';
+import { Component } from '@angular/core';
+import { AuthenticationService, UserDetails } from './authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'mean-sandbox';
-  currentUser: TokenPayload;
   
-  constructor(public auth: AuthenticationService, private cd: ChangeDetectorRef) {
-    this.auth.currentUser.subscribe(x => {
-      this.currentUser = x;
-      this.cd.detectChanges()
-    });
-  }
+  constructor(private router: Router, private auth: AuthenticationService) {}
   
-  get isLoggedIn() {
-    return this.currentUser;
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/login']);
   }
 }

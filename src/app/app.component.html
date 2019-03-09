@@ -9,9 +9,9 @@
       <li class="nav-item active">
         <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li *ngIf="!isLoggedIn"><a class="nav-link" routerLink="/login">Sign in</a></li>
-      <li *ngIf="isLoggedIn"><a class="nav-link" routerLink="/profile">{{ auth.getUserDetails()?.name }}</a></li>
-      <li *ngIf="isLoggedIn"><a class="nav-link" routerLink="/login">Logout</a></li>
+      <li *ngIf="!auth.isLoggedIn()"><a class="nav-link" routerLink="/login">Sign in</a></li>
+      <li *ngIf="auth.isLoggedIn()"><a class="nav-link" routerLink="/profile">{{ auth.getUserDetails()?.name }}</a></li>
+      <li *ngIf="auth.isLoggedIn()"><a class="nav-link" (click)="logout()">Logout</a></li>
     </ul>
   </div>
 </nav>
