@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -25,8 +25,13 @@ export interface TokenPayload {
 @Injectable()
 export class AuthenticationService {
   private token: string;
+  private currentUserSubject: BehaviorSubject<TokenPayload>;
+  public currentUser: Observable<TokenPayload>;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    this.currentUserSubject = new BehaviorSubject<TokenPayload>(JSON.parse(this.getToken()));
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
 
   private saveToken(token: string): void {
     localStorage.setItem('mean-token', token);
@@ -52,6 +57,10 @@ export class AuthenticationService {
     }
   }
 
+  public get currentUserValue(): TokenPayload {
+      return this.currentUserSubject.value;
+  }
+  
   public isLoggedIn(): boolean {
     const user = this.getUserDetails();
     if (user) {
@@ -74,6 +83,7 @@ export class AuthenticationService {
       map((data: TokenResponse) => {
         if (data.token) {
           this.saveToken(data.token);
+          this.currentUserSubject.next(user);
         }
         return data;
       })
@@ -97,6 +107,7 @@ export class AuthenticationService {
   public logout(): void {
     this.token = '';
     window.localStorage.removeItem('mean-token');
-    this.router.navigateByUrl('/');
+    this.currentUserSubject.next(null);
+    //this.router.navigateByUrl('/');
   }
 }
