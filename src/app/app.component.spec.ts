@@ -20,10 +20,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'mean-sandbox'`, () => {
+  it(`should have as title 'Librecanvas'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('mean-sandbox');
+    expect(app.title).toEqual('Librecanvas');
   });
 
   it('should render title in a h1 tag', () => {
