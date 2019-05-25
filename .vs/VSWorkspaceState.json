@@ -3,8 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\components\\user\\user-edit"
+    "\\src\\app\\components",
+    "\\src\\app\\components\\courses",
+    "\\src\\app\\components\\profile"
   ],
-  "SelectedNode": "\\src\\app\\components",
+  "SelectedNode": "\\src\\app\\components\\courses\\courses.component.html",
   "PreviewInSolutionExplorer": false
 }

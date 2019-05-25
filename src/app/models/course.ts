@@ -1,8 +1,12 @@
 import { Assignment } from './assignment';
 
 
-export interface Course {
+export class Course {
   _id: string;
+  instructorID: string;
+  courseTitle: string;
+  students: string[];
   enrollmentKey: string;
   assignments: Assignment[];
+
 }

@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CoursesComponent } from './components/courses/courses.component';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AdminComponent } from './components/admin/admin.component';
@@ -23,7 +24,8 @@ import { UserEditComponent } from './components/user/user-edit/user-edit.compone
     ProfileComponent,
     RegisterComponent,
     AdminComponent,
-    UserEditComponent
+    UserEditComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
