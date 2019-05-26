@@ -1,13 +1,17 @@
 <div>
   <h1>Courses</h1>
-  <h3>Instructor of these courses ...</h3>
+  <ul id="courses instructed">
+    <h3>Instructor of these courses ...</h3>
+    <li></li>
+    <li></li>
+    <li routerLinkActive="active">
+      <a class="nav-link" routerLink="/create-course">Create Course</a>
+    </li>
+  </ul>
+  <ul id="courses enrolled">
+    <h3>Student of these courses ...</h3>
 
-
-  <h5>(some create course button should go here)</h5>
-  <h3>Student of these courses ...</h3>
-
-
-  <h5>(some enroll button should go here)</h5>
+  </ul>
 
 
 
@@ -29,5 +33,12 @@
       <p class="col-sm-9 form-control-plaintext">{{ details?.role }}</p>
     </div>
 
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a></li>
+      <li routerLinkActive="active" *ngIf="auth.isLoggedIn()"><a class="nav-link" routerLink="/profile">Profile</a></li>
+      <li routerLinkActive="active" *ngIf="auth.isLoggedIn()"><a class="nav-link" routerLink="/courses">Courses</a></li>
+      <li routerLinkActive="active" *ngIf="isAdmin"><a class="nav-link" routerLink="/admin">Users</a></li>
+    </ul>
 
 -->

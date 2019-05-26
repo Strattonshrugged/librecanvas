@@ -15,6 +15,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
+import { CreateCourseComponent } from './components/create-course/create-course.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UserEditComponent } from './components/user/user-edit/user-edit.compone
     RegisterComponent,
     AdminComponent,
     UserEditComponent,
-    CoursesComponent
+    CoursesComponent,
+    CreateCourseComponent
   ],
   imports: [
     BrowserModule,

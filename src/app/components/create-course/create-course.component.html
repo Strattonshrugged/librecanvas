@@ -1,0 +1,34 @@
+<div class="col-md-6">
+  <h1>Create Course</h1>
+  <form [formGroup]="createCourseForm" (ngSubmit)="createcourse()">
+
+    <div class="form-group">
+      <label for="courseabbreviation">Course Abbreviation</label>
+      <input id="courseabbreviation" name="courseabbreviation" type="text" class="form-control" formControlName="courseabbreviation" placeholder="Enter Course Abbreviation">
+      <div *ngIf="f.courseabbreviation.invalid && (f.courseabbreviation.dirty || f.courseabbreviation.touched)" class="alert alert-danger">
+        <div *ngIf="f.courseabbreviation.errors.required">Course Abbreviation is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="coursetitle">Course Title</label>
+      <input id="coursetitle" name="coursetitle" type="text" class="form-control" formControlName="coursetitle" placeholder="Enter Course Title">
+      <div *ngIf="f.coursetitle.invalid && (f.coursetitle.dirty || f.coursetitle.touched)" class="alert alert-danger">
+        <div *ngIf="f.coursetitle.errors.required">Course Title is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="enrollmentkey">Course Enrollment Key</label>
+      <input id="enrollmentkey" name="enrollmentkey" type="password" class="form-control" formControlName="enrollmentkey" placeholder="Enrollment Key">
+      <div *ngIf="f.enrollmentkey.invalid && (f.enrollmentkey.dirty || f.enrollmentkey.touched)" class="alert alert-danger">
+        <div *ngIf="f.enrollmentkey.errors.required">Enrollment Key is required.</div>
+        <div *ngIf="f.enrollmentkey.errors.minlength">Enrollment Key must be at least 4 characters</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!createCourseForm.valid">Create Course!</button>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  </form>
+</div>
+
