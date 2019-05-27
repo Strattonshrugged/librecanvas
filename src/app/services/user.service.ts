@@ -32,4 +32,16 @@ export class UserService {
   deleteUser(id): Observable<any> {
     return this.http.get(`/api/users/delete/${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` }});
   }
+
+
+  addCourse(abbreviation: string, title: string, key: string) {
+    const course = {
+      abbreviation: abbreviation,
+      title: title,
+      key: key
+    }
+    return this.http.post(`/api/users/create-course`, course, { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
+  }
+
+
 }

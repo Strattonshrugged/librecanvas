@@ -11,6 +11,7 @@ var auth = jwt({
 var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
 var ctrlAdmin = require('../controllers/admin');
+var ctrlCourses = require('../controllers/courses');
 
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);
@@ -24,5 +25,8 @@ router.get('/users', auth, ctrlAdmin.getAllUsers);
 router.get('/users/:id', auth, ctrlAdmin.getUserById);
 router.post('/users/edit/:id', auth, ctrlAdmin.editUser);
 router.get('/users/delete/:id', auth, ctrlAdmin.deleteUser);
+
+// courses
+router.post('/users/create-course', auth, ctrlCourses.addCourse);
 
 export default router;
