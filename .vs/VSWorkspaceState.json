@@ -5,10 +5,12 @@
     "\\server\\config",
     "\\server\\controllers",
     "\\server\\models",
+    "\\server\\routes",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\models"
+    "\\src\\app\\components",
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\server\\models\\course.ts",
+  "SelectedNode": "\\src\\app\\components\\admin",
   "PreviewInSolutionExplorer": false
 }
