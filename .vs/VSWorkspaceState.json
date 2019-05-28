@@ -1,16 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\server",
-    "\\server\\config",
-    "\\server\\controllers",
-    "\\server\\models",
-    "\\server\\routes",
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\services"
+    "\\src\\app\\components\\create-course"
   ],
-  "SelectedNode": "\\src\\app\\components\\admin",
+  "SelectedNode": "\\src\\app\\components\\create-course\\create-course.component.spec.ts",
   "PreviewInSolutionExplorer": false
 }
