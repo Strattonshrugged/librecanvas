@@ -17,7 +17,6 @@ export class CreateCourseComponent implements OnInit {
 
   }
 
-  
   ngOnInit() {
     this.createCourseForm = this.fb.group({
       coursetitle: ['', [Validators.required]],
@@ -26,7 +25,6 @@ export class CreateCourseComponent implements OnInit {
     });
   }
   
-
   get f() { return this.createCourseForm.controls; }
 
   createcourse() {
@@ -45,19 +43,6 @@ export class CreateCourseComponent implements OnInit {
       this.router.navigateByUrl('/courses');
     });
 
-
-    // console.log(this.createCourseForm.get('coursetitle').value);
-    // this.userService.addCourse(this.createCourseForm.get('coursetitle'))
-    /*
-        this.auth.register(credentials).subscribe(() => {
-      this.router.navigateByUrl('/profile');
-    }, (err) => {
-      this.error = err.error.message;
-      console.error(err);
-    });
-
-
-    */
 
   } // end of create course
 

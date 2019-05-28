@@ -22,7 +22,7 @@ var courseSchema = new mongoose.Schema({
 });
 
 
-courseSchema.statics.getInstructedCourses = function (instructorID) {
+courseSchema.statics.getInstructedCourses = function (inputID) {
   // this.find({ 'courseAbbreviation': 'Math 098' }, function (err, courses) {
   console.log('getInstructedCourses has been called');
   /*
@@ -35,8 +35,10 @@ courseSchema.statics.getInstructedCourses = function (instructorID) {
     }
   });
   */
+  console.log('Type Of ' + typeof inputID);
+  console.log(inputID);
 
-  return this.find({ 'courseAbbreviation': 'Math 098' }).exec();
+  return this.find({ 'instructorID': inputID }).exec();
 };
 
 

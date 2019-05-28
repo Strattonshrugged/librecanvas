@@ -13,7 +13,10 @@ export function getInstructedCourses(req, res) {
       "message": "Unauthorized. ID not found in payload."
     });
   } else {
-    Course.getInstructedCourses(req.body._id).then(function (courses) {
+    Course.getInstructedCourses(req.payload._id).then(function (courses) {
+      console.log('req stuff');
+      console.log(req.payload);
+
 
       res.status(200).json({
         "instructedCourses": courses
