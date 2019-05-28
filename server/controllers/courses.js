@@ -6,6 +6,88 @@ import Course from '../models/Course';
   res.json(content);
 };*/
 
+
+export function getInstructedCourses(req, res) {
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+    Course.getInstructedCourses(req.payload._id).then(function (courses) {
+      console.log('req stuff');
+      console.log(req.payload);
+
+
+      res.status(200).json({
+        "instructedCourses": courses
+      });
+
+      console.log('got courses');
+      console.log(courses);
+
+
+
+
+    }).catch(function (err) {
+      console.log('got an error');
+      console.log(err);
+      res.status(404);
+      res.json({});
+    }).finally(function () {
+      console.log('Finally!');
+    });
+
+
+      
+
+    // TESTING
+    /*
+    res.json({
+      "instructedCourses" : [
+      {
+        _id: '09876543210',
+        instructorID: '999999',
+        courseAbbreviation: 'Math 3210',
+        courseTitle: 'Counting Down With Math',
+        students: [],
+        enrollmentKey: 'countdown',
+        assignments: []
+      }]
+    });
+    */
+    return;
+  }
+}
+
+export function getEnrolledCourses(req, res) {
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+    res.status(200);
+    //res.json({ Course.getEnrolledCourses(req.body._id) });
+
+    // TESTING
+    /*
+    res.json
+    {
+      _id: '0123456789',
+      instructorID: '142434546474',
+      courseAbbreviation: 'Math 0123',
+      courseTitle: 'Counting Up With Math',
+      students: ['999999'],
+      enrollmentKey: 'countup',
+      assignments: []
+    }
+    */
+
+
+
+    return;
+  }
+}
+
 export function addCourse(req, res) {
   if (!req.payload._id) {
     res.status(401).json({
@@ -14,6 +96,7 @@ export function addCourse(req, res) {
   } else {
     let course = new Course();
     console.log(req.body)
+    course.instructorID = req.payload._id;
     course.courseAbbreviation = req.body.abbreviation;
     course.courseTitle = req.body.title;
     course.enrollmentKey = req.body.key;
@@ -37,23 +120,12 @@ export function addCourse(req, res) {
         return;
       }
 
-
       res.status(201);
       res.json({
         "message": "Course Created!"
       });
-
-
-
     });
 
-
-
-    /*
-    User.findById(req.payload._id).exec(function (err, user) {
-      res.status(200).json(user);
-    });
-    */
   }
 
 

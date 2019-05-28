@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-course',
@@ -12,11 +13,10 @@ export class CreateCourseComponent implements OnInit {
   createCourseForm: FormGroup;
   error = '';
 
-  constructor(private userService: UserService, private fb: FormBuilder) {
+  constructor(private userService: UserService, private router: Router, private fb: FormBuilder) {
 
   }
 
-  
   ngOnInit() {
     this.createCourseForm = this.fb.group({
       coursetitle: ['', [Validators.required]],
@@ -25,11 +25,9 @@ export class CreateCourseComponent implements OnInit {
     });
   }
   
-
   get f() { return this.createCourseForm.controls; }
 
   createcourse() {
-    console.log('creating course');
 
     if (this.createCourseForm.invalid) {
       console.log('getting invalid create course');
@@ -41,11 +39,10 @@ export class CreateCourseComponent implements OnInit {
       this.createCourseForm.get('coursetitle').value,
       this.createCourseForm.get('enrollmentkey').value
 
-    ).subscribe(() => { console.log('course posted') });
+    ).subscribe(() => {
+      this.router.navigateByUrl('/courses');
+    });
 
-
-    // console.log(this.createCourseForm.get('coursetitle').value);
-    // this.userService.addCourse(this.createCourseForm.get('coursetitle'))
 
   } // end of create course
 

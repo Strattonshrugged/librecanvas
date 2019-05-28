@@ -28,5 +28,8 @@ router.get('/users/delete/:id', auth, ctrlAdmin.deleteUser);
 
 // courses
 router.post('/users/create-course', auth, ctrlCourses.addCourse);
+router.get('/courses/get-instructed-courses', auth, ctrlCourses.getInstructedCourses);
+router.get('/courses/get-enrolled-courses', auth, ctrlCourses.getEnrolledCourses);
 
 export default router;
+
