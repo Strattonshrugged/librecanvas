@@ -2,6 +2,10 @@ import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 
 var courseSchema = new mongoose.Schema({
+  instructorID: {
+    type: String,
+    required: true
+  },
   courseAbbreviation: {
     type: String,
     required: true

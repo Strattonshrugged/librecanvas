@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-course',
@@ -12,7 +13,7 @@ export class CreateCourseComponent implements OnInit {
   createCourseForm: FormGroup;
   error = '';
 
-  constructor(private userService: UserService, private fb: FormBuilder) {
+  constructor(private userService: UserService, private router: Router, private fb: FormBuilder) {
 
   }
 
@@ -29,7 +30,6 @@ export class CreateCourseComponent implements OnInit {
   get f() { return this.createCourseForm.controls; }
 
   createcourse() {
-    console.log('creating course');
 
     if (this.createCourseForm.invalid) {
       console.log('getting invalid create course');
@@ -41,11 +41,23 @@ export class CreateCourseComponent implements OnInit {
       this.createCourseForm.get('coursetitle').value,
       this.createCourseForm.get('enrollmentkey').value
 
-    ).subscribe(() => { console.log('course posted') });
+    ).subscribe(() => {
+      this.router.navigateByUrl('/courses');
+    });
 
 
     // console.log(this.createCourseForm.get('coursetitle').value);
     // this.userService.addCourse(this.createCourseForm.get('coursetitle'))
+    /*
+        this.auth.register(credentials).subscribe(() => {
+      this.router.navigateByUrl('/profile');
+    }, (err) => {
+      this.error = err.error.message;
+      console.error(err);
+    });
+
+
+    */
 
   } // end of create course
 

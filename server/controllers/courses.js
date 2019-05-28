@@ -93,6 +93,7 @@ export function addCourse(req, res) {
   } else {
     let course = new Course();
     console.log(req.body)
+    course.instructorID = req.payload._id;
     course.courseAbbreviation = req.body.abbreviation;
     course.courseTitle = req.body.title;
     course.enrollmentKey = req.body.key;
