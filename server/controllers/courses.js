@@ -14,47 +14,26 @@ export function getInstructedCourses(req, res) {
     });
   } else {
     Course.getInstructedCourses(req.payload._id).then(function (courses) {
-      console.log('req stuff');
-      console.log(req.payload);
+      //console.log('req stuff');
+     // console.log(req.payload);
 
 
       res.status(200).json({
         "instructedCourses": courses
       });
 
-      console.log('got courses');
-      console.log(courses);
-
-
-
+      //console.log('got courses');
+      //console.log(courses);
 
     }).catch(function (err) {
-      console.log('got an error');
-      console.log(err);
+      //console.log('got an error');
+      //console.log(err);
       res.status(404);
       res.json({});
     }).finally(function () {
-      console.log('Finally!');
+      //console.log('Finally!');
     });
 
-
-      
-
-    // TESTING
-    /*
-    res.json({
-      "instructedCourses" : [
-      {
-        _id: '09876543210',
-        instructorID: '999999',
-        courseAbbreviation: 'Math 3210',
-        courseTitle: 'Counting Down With Math',
-        students: [],
-        enrollmentKey: 'countdown',
-        assignments: []
-      }]
-    });
-    */
     return;
   }
 }
@@ -65,24 +44,26 @@ export function getEnrolledCourses(req, res) {
       "message": "Unauthorized. ID not found in payload."
     });
   } else {
-    res.status(200);
-    //res.json({ Course.getEnrolledCourses(req.body._id) });
-
-    // TESTING
-    /*
-    res.json
-    {
-      _id: '0123456789',
-      instructorID: '142434546474',
-      courseAbbreviation: 'Math 0123',
-      courseTitle: 'Counting Up With Math',
-      students: ['999999'],
-      enrollmentKey: 'countup',
-      assignments: []
-    }
-    */
+   Course.getEnrolledCourses(req.payload._id).then(function (courses) {
+      console.log('req stuff');
+      console.log(req.payload);
 
 
+      res.status(200).json({
+        "enrolledCourses": courses
+      });
+
+      console.log('got courses');
+      console.log(courses);
+      
+    }).catch(function (err) {
+      console.log('got an error');
+      console.log(err);
+      res.status(404);
+      res.json({});
+    }).finally(function () {
+      console.log('Finally!');
+    });
 
     return;
   }
@@ -130,3 +111,35 @@ export function addCourse(req, res) {
 
 
 }
+
+
+    // TESTING
+    /*
+    res.json
+    {
+      _id: '0123456789',
+      instructorID: '142434546474',
+      courseAbbreviation: 'Math 0123',
+      courseTitle: 'Counting Up With Math',
+      students: ['999999'],
+      enrollmentKey: 'countup',
+      assignments: []
+    }
+    */
+
+    // TESTING
+    /*
+    res.json({
+      "instructedCourses" : [
+      {
+        _id: '09876543210',
+        instructorID: '999999',
+        courseAbbreviation: 'Math 3210',
+        courseTitle: 'Counting Down With Math',
+        students: [],
+        enrollmentKey: 'countdown',
+        assignments: []
+      }]
+    });
+    */
+

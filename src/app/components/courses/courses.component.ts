@@ -50,7 +50,7 @@ export class CoursesComponent implements OnInit {
 
   getEnrolledCourses(): void {
     this.courseService.getEnrolledCourses().subscribe(courses => {
-      this.enrolledCourses = courses;
+      this.enrolledCourses = courses.enrolledCourses;
     })
   }
   

@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AuthenticationService } from '../../services/authentication.service';
 import { ProfileComponent } from './profile.component';
+import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -8,7 +10,9 @@ describe('ProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ]
+      imports: [ HttpClientTestingModule, RouterTestingModule ],
+      declarations: [ ProfileComponent ],
+      providers: [ AuthenticationService ]
     })
     .compileComponents();
   }));
@@ -23,3 +27,4 @@ describe('ProfileComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
