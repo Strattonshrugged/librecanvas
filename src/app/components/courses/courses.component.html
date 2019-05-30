@@ -1,8 +1,29 @@
 <div>
   <h1>Courses</h1>
 
+  <h4>Instructed Courses</h4>
   <ul id="courses instructed">
     <li *ngFor="let course of instructedCourses" class="course">
+      <a routerLink="/{{course._id}}">
+        {{course.courseAbbreviation}}
+        {{course.courseTitle}}
+      </a>
+    </li>
+  </ul>
+
+  <h4>Enrolled Courses</h4>
+  <ul id="courses enrolled">
+    <li *ngFor="let course of enrolledCourses" class="course">
+      <a routerLink="/{{course._id}}">
+        {{course.courseAbbreviation}}
+        {{course.courseTitle}}
+      </a>
+    </li>
+  </ul>
+
+  <h4>All Other Courses</h4>
+  <ul id="courses enrolled">
+    <li *ngFor="let course of allOtherCourses" class="course">
       <a routerLink="/{{course._id}}">
         {{course.courseAbbreviation}}
         {{course.courseTitle}}
@@ -14,13 +35,6 @@
       </a>
     </li>
   </ul>
-  <ul id="courses enrolled">
-    <li *ngFor="let course of enrolledCourses" class="course">
-      <a routerLink="/{{course._id}}">
-        {{course.courseAbbreviation}}
-        {{course.courseTitle}}
-      </a>
-    </li>
-  </ul>
 </div>
+
 

@@ -11,12 +11,15 @@ import { CourseService } from '../../services/course.service';
 export class CoursesComponent implements OnInit {
   instructedCourses: Course[];
   enrolledCourses: Course[];
+  allOtherCourses: Course[];
 
   constructor(private courseService: CourseService) { }
   
   ngOnInit() {
     this.getInstructedCourses();
     this.getEnrolledCourses();
+    this.getAllOtherCourses();
+    // this.getCourses();
 
     // TESTING
     /*
@@ -41,6 +44,17 @@ export class CoursesComponent implements OnInit {
     */
 
   }
+
+  /*
+  getCourses(): void {
+    this.courseService.getCourses().subscribe(courses => {
+      this.instructedCourses = courses.instructedCourses;
+      this.enrolledCourses = courses.enrolledCourses;
+      this.allOtherCourses = courses.allOtherCourses;
+    })
+  }
+  */
+
   
   getInstructedCourses(): void {
     this.courseService.getInstructedCourses().subscribe(courses => {
@@ -54,7 +68,11 @@ export class CoursesComponent implements OnInit {
     })
   }
   
-
+  getAllOtherCourses(): void {
+    this.courseService.getAllOtherCourses().subscribe(courses => {
+      this.allOtherCourses = courses.allOtherCourses;
+    })
+  }
 
 }
 

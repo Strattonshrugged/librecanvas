@@ -7,68 +7,6 @@ import Course from '../models/Course';
 };*/
 
 
-export function getInstructedCourses(req, res) {
-  if (!req.payload._id) {
-    res.status(401).json({
-      "message": "Unauthorized. ID not found in payload."
-    });
-  } else {
-    Course.getInstructedCourses(req.payload._id).then(function (courses) {
-      //console.log('req stuff');
-     // console.log(req.payload);
-
-
-      res.status(200).json({
-        "instructedCourses": courses
-      });
-
-      //console.log('got courses');
-      //console.log(courses);
-
-    }).catch(function (err) {
-      //console.log('got an error');
-      //console.log(err);
-      res.status(404);
-      res.json({});
-    }).finally(function () {
-      //console.log('Finally!');
-    });
-
-    return;
-  }
-}
-
-export function getEnrolledCourses(req, res) {
-  if (!req.payload._id) {
-    res.status(401).json({
-      "message": "Unauthorized. ID not found in payload."
-    });
-  } else {
-   Course.getEnrolledCourses(req.payload._id).then(function (courses) {
-      console.log('req stuff');
-      console.log(req.payload);
-
-
-      res.status(200).json({
-        "enrolledCourses": courses
-      });
-
-      console.log('got courses');
-      console.log(courses);
-      
-    }).catch(function (err) {
-      console.log('got an error');
-      console.log(err);
-      res.status(404);
-      res.json({});
-    }).finally(function () {
-      console.log('Finally!');
-    });
-
-    return;
-  }
-}
-
 export function addCourse(req, res) {
   if (!req.payload._id) {
     res.status(401).json({
@@ -110,6 +48,104 @@ export function addCourse(req, res) {
   }
 
 
+}
+
+/* CANNOT GET SYNTAX RIGHT
+export function getCourses(req, res) {
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+    Course.getInstructedCourses(req.payload._id).then(res.json.bind(res));
+
+    Course.getInstructedCourses(req.payload._id).then(function (courses) {
+      console.log('this is what comes back from CourseModelFunction');
+      console.log(Course.getInstructedCourses(req.payload._id));
+      res.status(200).json({
+        "instructedCourses": courses,
+        "enrolledCourses": courses,
+        "allOtherCourses": courses
+      });
+    }).catch(function (err) {
+      console.log('got an error');
+      console.log(err);
+      res.status(404);
+      res.json({});
+    }).finally(function () {
+      //console.log('Finally!');
+    });
+    return;
+  }
+}
+*/
+
+
+export function getInstructedCourses(req, res) {
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+    Course.getInstructedCourses(req.payload._id).then(function (courses) {
+      res.status(200).json({
+        "instructedCourses": courses
+      });
+    }).catch(function (err) {
+      console.log('got an error');
+      console.log(err);
+      res.status(404);
+      res.json({});
+    }).finally(function () {
+      //console.log('Finally!');
+    });
+    return;
+  }
+}
+
+export function getEnrolledCourses(req, res) {
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+   Course.getEnrolledCourses(req.payload._id).then(function (courses) {
+      res.status(200).json({
+        "enrolledCourses": courses
+      });
+    }).catch(function (err) {
+      console.log('got an error');
+      console.log(err);
+      res.status(404);
+      res.json({});
+    }).finally(function () {
+      //console.log('Finally!');
+    });
+    return;
+  }
+}
+
+export function getAllOtherCourses(req, res) {
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+    Course.getAllOtherCourses(req.payload._id).then(function (courses) {
+      res.status(200).json({
+        "enrolledCourses": courses
+      });
+    }).catch(function (err) {
+      console.log('got an error');
+      console.log(err);
+      res.status(404);
+      res.json({});
+    }).finally(function () {
+      //console.log('Finally!');
+    });
+
+    return;
+  }
 }
 
 
