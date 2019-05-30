@@ -133,7 +133,7 @@ export function getAllOtherCourses(req, res) {
   } else {
     Course.getAllOtherCourses(req.payload._id).then(function (courses) {
       res.status(200).json({
-        "enrolledCourses": courses
+        "allOtherCourses": courses
       });
     }).catch(function (err) {
       console.log('got an error');

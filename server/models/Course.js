@@ -47,15 +47,16 @@ courseSchema.statics.getAllOtherCourses = function (inputID) {
   // console.log('getEnrolledCourses has been called');
   // console.log('Type Of ' + typeof inputID);
   // console.log(inputID);
+
   return this.find(
-  /*
+  
     {
-      $or: [
-        { 'students': { $ne: inputID } },
+      $and: [
+        { 'students': { $nin: [inputID] } },
         { 'instructorID': { $ne: inputID } }
       ]
     }
-  */
+  
   ).exec();
 }
 
