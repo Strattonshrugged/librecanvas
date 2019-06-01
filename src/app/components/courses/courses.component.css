@@ -1,56 +1,82 @@
 .course {
-    margin: 0 0 0 0;
-    list-style-type: none;
-    padding: 0;
-    width: 15em;
-  }
-  
-  .course li {
-    position: relative;
-    cursor: pointer;
-    background-color: #EEE;
-    margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
-    border-radius: 4px;
-    width: 360px;
-  }
-  
-  .course li:hover {
-    color: #607D8B;
-    background-color: #DDD;
-    /*
-    left: .1em;
-    */
-  }
-  
-  .course a {
-    color: #888;
-    text-decoration: none;
-    position: relative;
-    display: block;
-    width: 360px; 
-  }
-  
-  .course a:hover {
-    color:#607D8B;
-  }
+  list-style-type: none;
+}
 
-  .course .badge {
-    display: inline-block;
-    font-size: small;
-    color: white;
-    padding: 0.8em 0.7em 0 0.7em;
-    background-color: #607D8B;
-    line-height: 1em;
-    position: relative;
-    top: -4px;
-    left: -1px;
-    top: -4px;
-    height: 1.8em;
-    width: 120px; 
-    text-align: right;
-    margin-right: .8em;
-    border-radius: 4px 0 0 4px;
-  }
-  
+.course li {
+  position: relative;
+}
+
+.course a {
+  position: relative;
+  text-decoration: none;
+  background-image: linear-gradient(to right, orange, yellow);
+  padding: .2em .5em .2em .5em;
+  margin: .3em;
+  display: block;
+  border-radius: 4px;
+}
+
+.course a:hover {
+  background-image: linear-gradient(to left, orange, yellow);
+  text-decoration: none;
+}
+
+.course span  {
+  padding: 0 .5em 0 .5em;
+}
+
+/*
+.course {
+  margin: 0 0 0 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+
+.course li {
+  position: relative;
+  cursor: pointer;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+  width: 360px;
+}
+
+.course li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+ }
+
+.course a {
+  color: #888;
+  text-decoration: none;
+  position: relative;
+  display: block;
+  width: 360px;
+}
+
+.course a:hover {
+  color: #607D8B;
+}
+
+.course .abbreviationGoesHere {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  top: -4px;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  width: 120px;
+  text-align: right;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+*/

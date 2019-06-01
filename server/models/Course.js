@@ -53,14 +53,12 @@ courseSchema.statics.getAllOtherCourses = function (inputID) {
   // console.log(inputID);
 
   return this.find(
-  
     {
       $and: [
         { 'students': { $nin: [inputID] } },
         { 'instructorID': { $ne: inputID } }
       ]
     }
-  
   ).select('courseAbbreviation courseTitle').exec();
 }
 
