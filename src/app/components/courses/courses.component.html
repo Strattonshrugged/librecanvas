@@ -1,17 +1,18 @@
 <div>
   <h1>Courses</h1>
 
-  <h4>Instructed Courses</h4>
+  <h4 *ngIf="!isAdmin">Instructed Courses</h4>
   <ul class="courses instructed">
     <li *ngFor="let course of instructedCourses" class="course">
       <a routerLink="/{{course._id}}">
         {{course.courseAbbreviation}}
         {{course.courseTitle}}
+        {{course.instructorID}}
       </a>
     </li>
   </ul>
 
-  <h4>Enrolled Courses</h4>
+  <h4 *ngIf="!isAdmin">Enrolled Courses</h4>
   <ul class="courses enrolled">
     <li *ngFor="let course of enrolledCourses" class="course">
       <a routerLink="/{{course._id}}">
@@ -21,7 +22,7 @@
     </li>
   </ul>
 
-  <h4>All Other Courses</h4>
+  <h4 *ngIf="!isAdmin">All Other Courses</h4>
   <ul class="courses allOther">
     <li *ngFor="let course of allOtherCourses" class="course">
       <a routerLink="/{{course._id}}">

@@ -3,11 +3,12 @@
     "",
     "\\server",
     "\\server\\controllers",
-    "\\src",
+    "\\server\\models",
+    "\\server\\routes",
     "\\src\\app",
     "\\src\\app\\components",
     "\\src\\app\\components\\courses"
   ],
-  "SelectedNode": "\\src\\app\\components\\courses\\courses.component.ts",
+  "SelectedNode": "\\server\\controllers\\courses.js",
   "PreviewInSolutionExplorer": false
 }

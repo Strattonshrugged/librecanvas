@@ -37,14 +37,14 @@ courseSchema.statics.getInstructedCourses = function (inputID) {
   // console.log('Type Of ' + typeof inputID);
   // console.log(inputID);
 
-  return this.find({ 'instructorID': inputID }).exec();
+  return this.find({ 'instructorID': inputID }).select('courseAbbreviation courseTitle').exec();
 };
 
 courseSchema.statics.getEnrolledCourses = function (inputID)  {
   // console.log('getEnrolledCourses has been called');
   // console.log('Type Of ' + typeof inputID);
   // console.log(inputID);
-  return this.find({ 'students': inputID }).exec();
+  return this.find({ 'students': inputID }).select('courseAbbreviation courseTitle').exec();
 }
 
 courseSchema.statics.getAllOtherCourses = function (inputID) {
@@ -61,7 +61,7 @@ courseSchema.statics.getAllOtherCourses = function (inputID) {
       ]
     }
   
-  ).exec();
+  ).select('courseAbbreviation courseTitle').exec();
 }
 
 /*
