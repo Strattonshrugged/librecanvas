@@ -16,46 +16,21 @@ export class CoursesComponent implements OnInit {
   constructor(private courseService: CourseService) { }
   
   ngOnInit() {
-    this.getInstructedCourses();
-    this.getEnrolledCourses();
-    this.getAllOtherCourses();
-    // this.getCourses();
-
-    // TESTING
-    /*
-    this.instructedCourses = [{
-      _id: '09876543210',
-      instructorID: '999999',
-      courseAbbreviation: 'Math 3210',
-      courseTitle: 'Counting Down With Math',
-      students: [],
-      enrollmentKey: 'countdown',
-      assignments: []
-    }];
-    this.enrolledCourses = [{
-      _id: '0123456789',
-      instructorID: '142434546474',
-      courseAbbreviation: 'Math 0123',
-      courseTitle: 'Counting Up With Math',
-      students: ['999999'],
-      enrollmentKey: 'countup',
-      assignments: []
-    }];
-    */
-
+    this.getAllCourses();
+   //  this.getInstructedCourses();
+    // this.getEnrolledCourses();
+    // this.getAllOtherCourses();
   }
 
-  /*
-  getCourses(): void {
-    this.courseService.getCourses().subscribe(courses => {
+  getAllCourses(): void {
+    this.courseService.getAllCourses().subscribe(courses => {
       this.instructedCourses = courses.instructedCourses;
       this.enrolledCourses = courses.enrolledCourses;
       this.allOtherCourses = courses.allOtherCourses;
     })
   }
-  */
 
-  
+  /*
   getInstructedCourses(): void {
     this.courseService.getInstructedCourses().subscribe(courses => {
       this.instructedCourses = courses.instructedCourses;
@@ -73,6 +48,7 @@ export class CoursesComponent implements OnInit {
       this.allOtherCourses = courses.allOtherCourses;
     })
   }
+  */
 
 }
 

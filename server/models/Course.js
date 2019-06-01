@@ -26,6 +26,10 @@ var courseSchema = new mongoose.Schema({
 
 
 
+courseSchema.statics.getAllCourses = courseSchema.statics.getInstructedCourses = function () {
+  let matthew = this.find().exec();
+  return matthew;
+};
 
 courseSchema.statics.getInstructedCourses = function (inputID) {
   // this.find({ 'courseAbbreviation': 'Math 098' }, function (err, courses) {

@@ -11,9 +11,11 @@ export class CourseService {
   readonly coursesUrl = 'http://localhost:4000/courses';
   constructor(private http: HttpClient) { }
 
-  // TODO change observable to course array?
+  getAllCourses(): Observable<any> {
+    return this.http.get('/api/courses/get-allCourses', { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
+  };
 
-  
+  /*
   getCourses(): Observable<any> {
     return this.http.get('/api/courses/get-courses', { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
   };
@@ -29,8 +31,7 @@ export class CourseService {
   getAllOtherCourses(): Observable<any> {
     return this.http.get('/api/courses/get-allOther-courses', { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
   };
-
-
+  */
 }
 
 

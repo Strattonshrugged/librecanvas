@@ -20,7 +20,6 @@ export function addCourse(req, res) {
     course.courseTitle = req.body.title;
     course.enrollmentKey = req.body.key;
 
-
     course.save((err) => {
       if (err && err.code === 11000) {
         res.status(409);
@@ -46,28 +45,31 @@ export function addCourse(req, res) {
     });
 
   }
+} // end of allCourse
 
-
-}
-
-/* CANNOT GET SYNTAX RIGHT
-export function getCourses(req, res) {
+export function getAllCourses(req, res) {
   if (!req.payload._id) {
     res.status(401).json({
       "message": "Unauthorized. ID not found in payload."
     });
   } else {
-    Course.getInstructedCourses(req.payload._id).then(res.json.bind(res));
-
-    Course.getInstructedCourses(req.payload._id).then(function (courses) {
-      console.log('this is what comes back from CourseModelFunction');
-      console.log(Course.getInstructedCourses(req.payload._id));
-      res.status(200).json({
-        "instructedCourses": courses,
-        "enrolledCourses": courses,
-        "allOtherCourses": courses
-      });
-    }).catch(function (err) {
+    res.status(200)
+    const promisedInstructedCourses = Course.getInstructedCourses(req.payload._id);
+    const promisedEnrolledCourses = Course.getEnrolledCourses(req.payload._id);
+    const promisedAllOtherCourses = Course.getAllOtherCourses(req.payload._id);
+  Promise.all([
+    promisedInstructedCourses,
+    promisedEnrolledCourses,
+    promisedAllOtherCourses
+    ])
+    .then(resultArray => {
+      res.json({
+        "instructedCourses": resultArray[0],
+        "enrolledCourses": resultArray[1],
+        "allOtherCourses": resultArray[2]
+      })
+    })
+    .catch(function (err) {
       console.log('got an error');
       console.log(err);
       res.status(404);
@@ -77,10 +79,20 @@ export function getCourses(req, res) {
     });
     return;
   }
-}
-*/
+
+} // end of getAllCourses
 
 
+
+
+
+
+
+
+
+
+
+/*
 export function getInstructedCourses(req, res) {
   if (!req.payload._id) {
     res.status(401).json({
@@ -109,7 +121,8 @@ export function getEnrolledCourses(req, res) {
       "message": "Unauthorized. ID not found in payload."
     });
   } else {
-   Course.getEnrolledCourses(req.payload._id).then(function (courses) {
+    //console.log(getAllCourses());
+    Course.getEnrolledCourses(req.payload._id).then(function (courses) {
       res.status(200).json({
         "enrolledCourses": courses
       });
@@ -147,35 +160,6 @@ export function getAllOtherCourses(req, res) {
     return;
   }
 }
+*/
 
-
-    // TESTING
-    /*
-    res.json
-    {
-      _id: '0123456789',
-      instructorID: '142434546474',
-      courseAbbreviation: 'Math 0123',
-      courseTitle: 'Counting Up With Math',
-      students: ['999999'],
-      enrollmentKey: 'countup',
-      assignments: []
-    }
-    */
-
-    // TESTING
-    /*
-    res.json({
-      "instructedCourses" : [
-      {
-        _id: '09876543210',
-        instructorID: '999999',
-        courseAbbreviation: 'Math 3210',
-        courseTitle: 'Counting Down With Math',
-        students: [],
-        enrollmentKey: 'countdown',
-        assignments: []
-      }]
-    });
-    */
 
