@@ -17,6 +17,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
 import { CreateCourseComponent } from './components/create-course/create-course.component';
 import { CourseService } from './services/course.service';
+import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CourseService } from './services/course.service';
     AdminComponent,
     UserEditComponent,
     CoursesComponent,
-    CreateCourseComponent
+    CreateCourseComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@
   <h6 *ngIf="!isAdmin">Instructed Courses</h6>
   <ul class="courses instructed">
     <li *ngFor="let course of instructedCourses" class="course">
-      <a routerLink="/{{course._id}}">
+      <a routerLink="/courses/{{course._id}}">
         <span class="abbreviation">{{course.courseAbbreviation}}</span>
         <span class="title">{{course.courseTitle}}</span>
       </a>
@@ -14,7 +14,7 @@
   <h6 *ngIf="!isAdmin">Enrolled Courses</h6>
   <ul class="courses enrolled">
     <li *ngFor="let course of enrolledCourses" class="course">
-      <a routerLink="/{{course._id}}">
+      <a routerLink="/courses/{{course._id}}">
         <span class="abbreviation">{{course.courseAbbreviation}}</span>
         <span class="title">{{course.courseTitle}}</span>
       </a>
@@ -24,7 +24,7 @@
   <h6 *ngIf="!isAdmin">All Other Courses</h6>
   <ul class="courses allOther">
     <li *ngFor="let course of allOtherCourses" class="course">
-      <a routerLink="/{{course._id}}">
+      <a routerLink="/courses/{{course._id}}">
         <span class="abbreviation">{{course.courseAbbreviation}}</span>
         <span class="title">{{course.courseTitle}}</span>
       </a>
