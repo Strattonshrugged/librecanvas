@@ -7,87 +7,6 @@ import Course from '../models/Course';
 };*/
 
 
-export function getInstructedCourses(req, res) {
-  if (!req.payload._id) {
-    res.status(401).json({
-      "message": "Unauthorized. ID not found in payload."
-    });
-  } else {
-    Course.getInstructedCourses(req.payload._id).then(function (courses) {
-      console.log('req stuff');
-      console.log(req.payload);
-
-
-      res.status(200).json({
-        "instructedCourses": courses
-      });
-
-      console.log('got courses');
-      console.log(courses);
-
-
-
-
-    }).catch(function (err) {
-      console.log('got an error');
-      console.log(err);
-      res.status(404);
-      res.json({});
-    }).finally(function () {
-      console.log('Finally!');
-    });
-
-
-      
-
-    // TESTING
-    /*
-    res.json({
-      "instructedCourses" : [
-      {
-        _id: '09876543210',
-        instructorID: '999999',
-        courseAbbreviation: 'Math 3210',
-        courseTitle: 'Counting Down With Math',
-        students: [],
-        enrollmentKey: 'countdown',
-        assignments: []
-      }]
-    });
-    */
-    return;
-  }
-}
-
-export function getEnrolledCourses(req, res) {
-  if (!req.payload._id) {
-    res.status(401).json({
-      "message": "Unauthorized. ID not found in payload."
-    });
-  } else {
-    res.status(200);
-    //res.json({ Course.getEnrolledCourses(req.body._id) });
-
-    // TESTING
-    /*
-    res.json
-    {
-      _id: '0123456789',
-      instructorID: '142434546474',
-      courseAbbreviation: 'Math 0123',
-      courseTitle: 'Counting Up With Math',
-      students: ['999999'],
-      enrollmentKey: 'countup',
-      assignments: []
-    }
-    */
-
-
-
-    return;
-  }
-}
-
 export function addCourse(req, res) {
   if (!req.payload._id) {
     res.status(401).json({
@@ -100,7 +19,6 @@ export function addCourse(req, res) {
     course.courseAbbreviation = req.body.abbreviation;
     course.courseTitle = req.body.title;
     course.enrollmentKey = req.body.key;
-
 
     course.save((err) => {
       if (err && err.code === 11000) {
@@ -127,6 +45,121 @@ export function addCourse(req, res) {
     });
 
   }
+} // end of allCourse
+
+export function getAllCourses(req, res) {
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+    res.status(200)
+    const promisedInstructedCourses = Course.getInstructedCourses(req.payload._id);
+    const promisedEnrolledCourses = Course.getEnrolledCourses(req.payload._id);
+    const promisedAllOtherCourses = Course.getAllOtherCourses(req.payload._id);
+  Promise.all([
+    promisedInstructedCourses,
+    promisedEnrolledCourses,
+    promisedAllOtherCourses
+    ])
+    .then(resultArray => {
+      res.json({
+        "instructedCourses": resultArray[0],
+        "enrolledCourses": resultArray[1],
+        "allOtherCourses": resultArray[2]
+      })
+    })
+    .catch(function (err) {
+      console.log('got an error');
+      console.log(err);
+      res.status(404);
+      res.json({});
+    }).finally(function () {
+      //console.log('Finally!');
+    });
+    return;
+  }
+
+} // end of getAllCourses
 
 
+
+
+
+
+
+
+
+
+
+/*
+export function getInstructedCourses(req, res) {
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+    Course.getInstructedCourses(req.payload._id).then(function (courses) {
+      res.status(200).json({
+        "instructedCourses": courses
+      });
+    }).catch(function (err) {
+      console.log('got an error');
+      console.log(err);
+      res.status(404);
+      res.json({});
+    }).finally(function () {
+      //console.log('Finally!');
+    });
+    return;
+  }
 }
+
+export function getEnrolledCourses(req, res) {
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+    //console.log(getAllCourses());
+    Course.getEnrolledCourses(req.payload._id).then(function (courses) {
+      res.status(200).json({
+        "enrolledCourses": courses
+      });
+    }).catch(function (err) {
+      console.log('got an error');
+      console.log(err);
+      res.status(404);
+      res.json({});
+    }).finally(function () {
+      //console.log('Finally!');
+    });
+    return;
+  }
+}
+
+export function getAllOtherCourses(req, res) {
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+    Course.getAllOtherCourses(req.payload._id).then(function (courses) {
+      res.status(200).json({
+        "allOtherCourses": courses
+      });
+    }).catch(function (err) {
+      console.log('got an error');
+      console.log(err);
+      res.status(404);
+      res.json({});
+    }).finally(function () {
+      //console.log('Finally!');
+    });
+
+    return;
+  }
+}
+*/
+
+

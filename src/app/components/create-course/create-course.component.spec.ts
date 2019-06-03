@@ -1,15 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { AuthenticationService } from '../../services/authentication.service';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CreateCourseComponent } from './create-course.component';
+import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 describe('CreateCourseComponent', () => {
   let component: CreateCourseComponent;
   let fixture: ComponentFixture<CreateCourseComponent>;
 
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateCourseComponent ]
-    })
+      imports: [ HttpClientTestingModule, ReactiveFormsModule, RouterTestingModule ],
+      declarations: [ CreateCourseComponent ],
+      providers: [ AuthenticationService ]    })
     .compileComponents();
   }));
 

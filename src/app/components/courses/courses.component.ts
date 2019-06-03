@@ -11,49 +11,24 @@ import { CourseService } from '../../services/course.service';
 export class CoursesComponent implements OnInit {
   instructedCourses: Course[];
   enrolledCourses: Course[];
+  allOtherCourses: Course[];
 
   constructor(private courseService: CourseService) { }
   
   ngOnInit() {
-    this.getInstructedCourses();
-    this.getEnrolledCourses();
-
-    // TESTING
-    /*
-    this.instructedCourses = [{
-      _id: '09876543210',
-      instructorID: '999999',
-      courseAbbreviation: 'Math 3210',
-      courseTitle: 'Counting Down With Math',
-      students: [],
-      enrollmentKey: 'countdown',
-      assignments: []
-    }];
-    this.enrolledCourses = [{
-      _id: '0123456789',
-      instructorID: '142434546474',
-      courseAbbreviation: 'Math 0123',
-      courseTitle: 'Counting Up With Math',
-      students: ['999999'],
-      enrollmentKey: 'countup',
-      assignments: []
-    }];
-    */
-
+    this.getAllCourses();
+   //  this.getInstructedCourses();
+    // this.getEnrolledCourses();
+    // this.getAllOtherCourses();
   }
-  
-  getInstructedCourses(): void {
-    this.courseService.getInstructedCourses().subscribe(courses => {
+
+  getAllCourses(): void {
+    this.courseService.getAllCourses().subscribe(courses => {
       this.instructedCourses = courses.instructedCourses;
+      this.enrolledCourses = courses.enrolledCourses;
+      this.allOtherCourses = courses.allOtherCourses;
     })
   }
-
-  getEnrolledCourses(): void {
-    this.courseService.getEnrolledCourses().subscribe(courses => {
-      this.enrolledCourses = courses;
-    })
-  }
-  
 
 
 }

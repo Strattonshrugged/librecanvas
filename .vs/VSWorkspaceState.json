@@ -4,8 +4,9 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\components",
-    "\\src\\app\\components\\create-course"
+    "\\src\\app\\components\\create-course",
+    "\\src\\app\\services"
   ],
-  "SelectedNode": "\\src\\app\\components\\create-course\\create-course.component.spec.ts",
+  "SelectedNode": "\\src\\app\\components\\courses",
   "PreviewInSolutionExplorer": false
 }

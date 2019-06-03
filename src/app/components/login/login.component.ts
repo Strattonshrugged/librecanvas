@@ -48,8 +48,8 @@ export class LoginComponent implements OnInit {
     };
     
     this.auth.login(credentials).subscribe(() => {
-      //this.router.navigateByUrl('/profile');
-      this.router.navigate([this.returnUrl]);
+      //default on-login go to courses
+      this.router.navigate([this.returnUrl + '/courses']);
     }, (err) => {
       this.error = err.error.message;
       console.error(err);

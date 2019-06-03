@@ -10,7 +10,7 @@ import { UserDetails } from './models/user';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'mean-sandbox';
+  title = 'Librecanvas';
   
   constructor(private router: Router, private auth: AuthenticationService) {}
   

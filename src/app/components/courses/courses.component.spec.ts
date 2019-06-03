@@ -1,14 +1,35 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CoursesComponent } from './courses.component';
+import { AuthenticationService } from '../../services/authentication.service';
+import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CourseService } from '../../services/course.service';
+import { of } from 'rxjs'
+
 
 describe('CoursesComponent', () => {
   let component: CoursesComponent;
   let fixture: ComponentFixture<CoursesComponent>;
 
+  const fakeCourseService = jasmine.createSpyObj('CourseService', ['getAllCourses']);
+  fakeCourseService.getAllCourses.and.returnValue(of(
+    {
+      "instructedCourses": [],
+      "enrolledCourses": [],
+      "allOtherCourses": []
+    }));
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CoursesComponent ]
+      imports: [ HttpClientTestingModule, RouterTestingModule ],
+      declarations: [ CoursesComponent ],
+      providers: [ AuthenticationService,
+        {
+          provide: CourseService,
+          useValue: fakeCourseService
+        }
+      ]
+
     })
     .compileComponents();
   }));
@@ -22,4 +43,13 @@ describe('CoursesComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // I don't know how to test this one
+  it('should unpackage courses object returned to getAllCourses', () => {
+    this.component.getAllCourses();
+    // see if instructedCourses exists? How to access courses object ...
+
+  });
+
+
 });

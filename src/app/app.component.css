@@ -1,3 +1,7 @@
 .hidden {
   visibility: hidden;
 }
+
+.navbar {
+  background-image: linear-gradient(to right, orange, yellow);
+}

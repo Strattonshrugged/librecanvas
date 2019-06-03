@@ -1,16 +1,25 @@
 import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AuthenticationService } from './services/authentication.service';
+import { By } from '@angular/platform-browser';
+
+
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule
       ],
       declarations: [
         AppComponent
       ],
+      providers: [
+        AuthenticationService
+      ]
     }).compileComponents();
   }));
 
@@ -29,7 +38,25 @@ describe('AppComponent', () => {
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to mean-sandbox!');
+    const compiled = fixture.debugElement.query(By.css('#title')).nativeElement;
+
+    expect(compiled.textContent).toContain('Librecanvas');
+
+//    const addButton: HTMLButtonElement = fixture.debugElement.query(By.css('#addHero')).nativeElement
   });
+
+  it('should call logout when you push the logout button', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.debugElement.componentInstance;
+    spyOn(this.component, 'logout');
+
+    let button = fixture.debugElement.nativeElement.query(By.css('#logoutButton'));
+    button.click();
+
+    fixture.whenStable().then(() => {
+      expect(this.component.logout).toHaveBeenCalled();
+    });
+  });
+
 });
+
