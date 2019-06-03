@@ -12,7 +12,7 @@
       <li routerLinkActive="active" *ngIf="isAdmin"><a class="nav-link" routerLink="/admin">Users</a></li>
     </ul>
     <!--<button *ngIf="!auth.isLoggedIn()" class="btn btn-primary hidden" type="button" routerLink="/login">Login</button>-->
-    <button *ngIf="auth.isLoggedIn()" class="btn btn-primary" type="button" (click)="logout()">Logout</button>
+    <button *ngIf="auth.isLoggedIn()" id="logoutButton" class="btn btn-primary" type="button" (click)="logout()">Logout</button>
   </div>
 </nav>
 

@@ -30,25 +30,6 @@ export class CoursesComponent implements OnInit {
     })
   }
 
-  /*
-  getInstructedCourses(): void {
-    this.courseService.getInstructedCourses().subscribe(courses => {
-      this.instructedCourses = courses.instructedCourses;
-    })
-  }
-
-  getEnrolledCourses(): void {
-    this.courseService.getEnrolledCourses().subscribe(courses => {
-      this.enrolledCourses = courses.enrolledCourses;
-    })
-  }
-  
-  getAllOtherCourses(): void {
-    this.courseService.getAllOtherCourses().subscribe(courses => {
-      this.allOtherCourses = courses.allOtherCourses;
-    })
-  }
-  */
 
 }
 

@@ -42,8 +42,21 @@ describe('AppComponent', () => {
 
     expect(compiled.textContent).toContain('Librecanvas');
 
-//    const addButton: HTMLButtonElement = fixture.debugElement.query(By.css('#addHero')).nativeElement;
-
+//    const addButton: HTMLButtonElement = fixture.debugElement.query(By.css('#addHero')).nativeElement
   });
+
+  it('should call logout when you push the logout button', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.debugElement.componentInstance;
+    spyOn(this.component, 'logout');
+
+    let button = fixture.debugElement.nativeElement.query(By.css('#logoutButton'));
+    button.click();
+
+    fixture.whenStable().then(() => {
+      expect(this.component.logout).toHaveBeenCalled();
+    });
+  });
+
 });
 

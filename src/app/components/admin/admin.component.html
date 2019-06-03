@@ -17,8 +17,8 @@
         <td>{{user.name}}</td>
         <td>{{user.email}}</td>
         <td>{{user.role}}</td>
-        <td><button class="btn btn-success" type="button" (click)="editUser(user._id)">Edit</button>
-        <button class="btn btn-danger" type="button" (click)="deleteUser(user._id)">Delete</button></td>
+        <td><button class="btn btn-success" type="button" id="editUserButton" (click)="editUser(user._id)">Edit</button>
+        <button class="btn btn-danger" type="button" id="deleteUserButton" (click)="deleteUser(user._id)">Delete</button></td>
       </tr>
     </tbody>
   </table>
