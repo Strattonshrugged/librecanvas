@@ -3,10 +3,8 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\components",
-    "\\src\\app\\components\\create-course",
-    "\\src\\app\\services"
+    "\\src\\app\\components"
   ],
-  "SelectedNode": "\\src\\app\\components\\courses",
+  "SelectedNode": "\\src\\app\\app.component.spec.ts",
   "PreviewInSolutionExplorer": false
 }

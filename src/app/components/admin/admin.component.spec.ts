@@ -37,8 +37,7 @@ describe('AdminComponent', () => {
         {provide: UserService, useValue: fakeUserService},
         {provide: Router, useValue: fakeRouter } ]
 
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -83,17 +82,19 @@ describe('AdminComponent', () => {
     })
   }));
 
-  it('should call deleteUser when delete user button is pushed', () => {
-    fixture = TestBed.createComponent(AdminComponent);
-    component = fixture.componentInstance;
+  it('should call deleteUser when delete user button is pushed', async (() => {
+    // fixture = TestBed.createComponent(AdminComponent);
+    // component = fixture.componentInstance;
 
     fixture.whenStable().then(() => {
-      spyOn(this.component, 'deleteUser');
-      let button = fixture.debugElement.nativeElement.query(By.css('#deleteUserButton'));
+      fixture.detectChanges();
+      let buttonArray = fixture.debugElement.queryAll(By.css('.deleteUserButton'));
+      expect(buttonArray.length).toEqual(1);
+      let button = buttonArray[0].nativeElement;
       button.click();
-      // TODO mock userService, verify deleteUser and fetchUser get called?
+      expect(fixture.debugElement.queryAll(By.css('.deleteUserButton'))).toBeNull;
     })
-  });
+  }));
 
 
 }); // END OF DESCRIBE

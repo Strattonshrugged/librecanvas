@@ -12,26 +12,6 @@ import { of } from 'rxjs';
 
 describe('AppComponent', () => {
 
-  /*
-class FakeAuthenticationService {
-  public getUserDetails(): UserDetails {
-    return null;
-    const token = this.getToken();
-    let payload;
-    if (token) {
-      payload = token.split('.')[1];
-      payload = window.atob(payload);
-      return JSON.parse(payload);
-    } else {
-      return null;
-    }
-  }
-  
-  public isLoggedIn(): boolean {
-    return true;
-  }
-}
-*/
 
   beforeEach(async(() => {
 
@@ -72,20 +52,8 @@ class FakeAuthenticationService {
 
     expect(compiled.textContent).toContain('Librecanvas');
 
-//    const addButton: HTMLButtonElement = fixture.debugElement.query(By.css('#addHero')).nativeElement
   });
 
-  it('should call logout when you push the logout button', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const component = fixture.debugElement.componentInstance;
 
-    fixture.whenStable().then(() => {
-      spyOn(this.component, 'logout');
-      let button = fixture.debugElement.nativeElement.query(By.css('#logoutButton'));
-      button.click();
-      expect(this.component.logout).toHaveBeenCalled();
-    });
-  });
-
-});
+}); // END OF DESCRIBE
 

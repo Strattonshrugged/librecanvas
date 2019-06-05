@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="!createCourseForm.valid">Create Course!</button>
+    <button type="submit" class="btn btn-primary submitButton" [disabled]="!createCourseForm.valid">Create Course!</button>
     <div *ngIf="error" class="alert alert-danger">{{error}}</div>
   </form>
 </div>
