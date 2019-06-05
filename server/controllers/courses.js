@@ -82,7 +82,27 @@ export function getAllCourses(req, res) {
 
 } // end of getAllCourses
 
-
+export function getCourseDetails(req, res) {
+    if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+      res.status(200).json({
+        "course":Course.findById(req.payload._id)
+      })
+    // tried setting json directly to Course query, no errors but nothing came back
+    .catch(function (err) {
+      console.log('got an error');
+      console.log(err);
+      res.status(404);
+      res.json({});
+    }).finally(function () {
+      console.log(res.json);
+    });
+    return;
+  }
+}
 
 
 

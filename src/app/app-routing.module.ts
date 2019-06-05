@@ -6,7 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { CreateCourseComponent } from './components/create-course/create-course.component';
-
+import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'courses', component: CoursesComponent, canActivate: [AuthGuard] },
+  { path: 'courses/:id', component: CourseDetailComponent, canActivate: [AuthGuard] },
   { path: 'create-course', component: CreateCourseComponent, canActivate: [AuthGuard] },
   //{ path: 'profile/edit', component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminGuard], data: { roles: [Role.Admin] } },

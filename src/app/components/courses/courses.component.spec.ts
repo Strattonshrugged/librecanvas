@@ -4,7 +4,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CourseService } from '../../services/course.service';
-import { of } from 'rxjs'
+import { of } from 'rxjs';
 
 
 describe('CoursesComponent', () => {
@@ -44,12 +44,7 @@ describe('CoursesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // I don't know how to test this one
-  it('should unpackage courses object returned to getAllCourses', () => {
-    this.component.getAllCourses();
-    // see if instructedCourses exists? How to access courses object ...
 
-  });
 
 
 });

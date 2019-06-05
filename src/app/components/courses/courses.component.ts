@@ -17,9 +17,6 @@ export class CoursesComponent implements OnInit {
   
   ngOnInit() {
     this.getAllCourses();
-   //  this.getInstructedCourses();
-    // this.getEnrolledCourses();
-    // this.getAllOtherCourses();
   }
 
   getAllCourses(): void {
