@@ -3,13 +3,17 @@ import { CourseService } from '../../services/course.service';
 import { Course } from '../../models/course';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { AuthenticationService } from '../../services/authentication.service';
+import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 @Component({
   selector: 'app-course-detail',
   templateUrl: './course-detail.component.html',
   styleUrls: ['./course-detail.component.css']
 })
+
 export class CourseDetailComponent implements OnInit {
   @Input() courseID: string;
   course: Course;
@@ -31,42 +35,4 @@ export class CourseDetailComponent implements OnInit {
 
 } // end of Component
 
-
-/*
-  constructor(private courseService: CourseService) { }
-
-  ngOnInit() {
-    this.getAllCourses();
-  }
-
-  getAllCourses(): void {
-    this.courseService.getAllCourses().subscribe(courses => {
-      this.instructedCourses = courses.instructedCourses;
-      this.enrolledCourses = courses.enrolledCourses;
-      this.allOtherCourses = courses.allOtherCourses;
-    })
-  }
-*/
-
-
-/*
-export class CoursesComponent implements OnInit {
-  instructedCourses: Course[];
-  enrolledCourses: Course[];
-  allOtherCourses: Course[];
-
-  constructor(private courseService: CourseService) { }
-
-  ngOnInit() {
-    this.getAllCourses();
-  }
-
-  getAllCourses(): void {
-    this.courseService.getAllCourses().subscribe(courses => {
-      this.instructedCourses = courses.instructedCourses;
-      this.enrolledCourses = courses.enrolledCourses;
-      this.allOtherCourses = courses.allOtherCourses;
-    })
-  }
-  */
 
