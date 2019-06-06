@@ -18,7 +18,7 @@ export class CourseService {
   };
 
 
-  getCourseDetails(_id: number): Observable<Course> {
+  getCourseDetails(_id: string): Observable<Course> {
     // const url = `${this.courseBaseUrl}/${_id}`;
     const url = `/api/courses/${_id}`;
 

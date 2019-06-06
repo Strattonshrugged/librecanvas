@@ -1,6 +1,6 @@
 <!--<button *ngIf="!auth.isLoggedIn()" class="btn btn-primary hidden" type="button" routerLink="/login">Login</button>-->
 
-<div>
+<div *ngIf="course">
   <h3>Course Page  {{course.courseAbbreviation}}</h3>
   <h5>{{course.courseTitle}}</h5>
 </div>
