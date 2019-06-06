@@ -6,15 +6,16 @@ import { HttpClientTestingModule, HttpTestingController} from '@angular/common/h
 import { RouterTestingModule } from '@angular/router/testing';
 import { CourseService } from '../../services/course.service';
 
+
 describe('CourseDetailComponent', () => {
   let component: CourseDetailComponent;
   let fixture: ComponentFixture<CourseDetailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       declarations: [CourseDetailComponent ],
-      providers: [AuthenticationService]
+      providers: [AuthenticationService, CourseService]
     })
     .compileComponents();
   }));
@@ -28,4 +29,13 @@ describe('CourseDetailComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+
+
+
+
+
+
+
 });

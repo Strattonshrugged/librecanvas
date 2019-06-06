@@ -1,49 +1,8 @@
+<!--<button *ngIf="!auth.isLoggedIn()" class="btn btn-primary hidden" type="button" routerLink="/login">Login</button>-->
+
 <div>
-  <h3>Course Page: ... coming soon</h3>
-  <h3>{{course}}</h3>
+  <h3>Course Page  {{course.courseAbbreviation}}</h3>
+  <h5>{{course.courseTitle}}</h5>
 </div>
 
 
-
-<!--
-    <div>
-  <h1>Courses</h1>
-  <h6 *ngIf="!isAdmin">Instructed Courses</h6>
-  <ul class="courses instructed">
-    <li *ngFor="let course of instructedCourses" class="course">
-      <a routerLink="../course-detail/{ {course._id
-    } }">
-    <span class="abbreviation"> { {course.courseAbbreviation} }</span>
-    <span class="title"> { {course.courseTitle} }</span>
-    </a>
-    </li>
-    </ul>
-
-    <h6 *ngIf="!isAdmin">Enrolled Courses</h6>
-    <ul class="courses enrolled">
-      <li *ngFor="let course of enrolledCourses" class="course">
-        <a routerLink="../course-detail//{ {course._id
-    } }">
-          <span class="abbreviation"> { {course.courseAbbreviation} }</span>
-          <span class="title"> { {course.courseTitle} }</span>
-        </a>
-      </li>
-    </ul>
-
-    <h6 *ngIf="!isAdmin">All Other Courses</h6>
-    <ul class="courses allOther">
-      <li *ngFor="let course of allOtherCourses" class="course">
-        <a routerLink="../course-detail//{ {course._id
-    } }">
-          <span class="abbreviation"> { {course.courseAbbreviation} }</span>
-          <span class="title"> { {course.courseTitle} }</span>
-        </a>
-      </li>
-      <li class="course allOther">
-        <a routerLink="/create-course">
-          <span class="createCourse">Create Course</span>
-        </a>
-      </li>
-    </ul>
-</div>
--->

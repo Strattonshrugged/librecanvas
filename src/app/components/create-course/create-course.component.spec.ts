@@ -6,6 +6,9 @@ import { CreateCourseComponent } from './create-course.component';
 import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { UserDetails } from '../../models/user';
+import { of } from 'rxjs';
 
 describe('CreateCourseComponent', () => {
   let component: CreateCourseComponent;
@@ -15,10 +18,23 @@ describe('CreateCourseComponent', () => {
   }
 
   beforeEach(async(() => {
+    const fakeUserService = jasmine.createSpyObj('UserService', ['getAllUsers']);
+    fakeUserService.getAllUsers.and.returnValue(of([{
+      _id: '123',
+      email: 'test@example.com',
+      name: 'joe',
+      role: 'user',
+      exp: 0,
+      iat: 0
+    }] as UserDetails[]
+    ));
+
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule, ReactiveFormsModule, RouterTestingModule ],
       declarations: [ CreateCourseComponent ],
-      providers: [AuthenticationService, { provide: Router, useValue: fakeRouter }]
+      providers: [AuthenticationService,
+        { provide: Router, useValue: fakeRouter },
+        { provide: UserService, useValue: fakeUserService }]
     }
       )
     .compileComponents();
@@ -54,9 +70,10 @@ describe('CreateCourseComponent', () => {
     component.createCourseForm.get('courseabbreviation').setValue('Chocolate Making');
     component.createCourseForm.get('enrollmentkey').setValue('1234');
     button.click();
-    expect(fakeRouter.navigate).toHaveBeenCalled;
 
+    expect(fakeRouter.navigate).toHaveBeenCalled;
   });
 
 });
+
 

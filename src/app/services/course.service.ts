@@ -7,24 +7,23 @@ import { Course } from '../models/course';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CourseService {
-  // readonly coursesUrl = 'http://localhost:4000/courses';
+  // readonly courseBaseUrl = 'http://localhost:4000/courses';
   constructor(private http: HttpClient) { }
 
   getAllCourses(): Observable<any> {
-    let blah = this.http.get('/api/courses/get-allCourses', { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
-    console.log(blah);
-    return blah;
+    return this.http.get('/api/courses/get-allCourses',
+      { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
   };
 
 
-  getCourseDetails(_id: string): Observable<any> {
-    // const url = `${this.heroesUrl}/${_id}`;
-    // return this.http.get('/api/course-detail/get-particularCourse', { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
-    // EXPECTED router.get('/courses/:id', auth, ctrlCourses.getCourseDetails);
-    // return this.http.get<Course>(url, { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });\
-    return this.http.get('/api/courses/' + _id, { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
+  getCourseDetails(_id: number): Observable<Course> {
+    // const url = `${this.courseBaseUrl}/${_id}`;
+    const url = `/api/courses/${_id}`;
 
+    return this.http.get<Course>(url,
+      { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
   };
 
   // brought over from tour of heroes, hero.service; after http request ...
