@@ -15,22 +15,27 @@ import { RouterTestingModule } from '@angular/router/testing';
 })
 
 export class CourseDetailComponent implements OnInit {
-  @Input() courseID: string;
   course: Course;
 
-  constructor(private courseService: CourseService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private courseService: CourseService,
+    private location: Location) { }
 
   ngOnInit() {
+    // this.course.courseAbbreviation = 'loading';
+    // this.course.courseTitle = 'loading';
+
     this.getCourseDetails();
   }
 
+
   getCourseDetails(): void {
-    this.courseService.getCourseDetails(this.courseID).subscribe(course => {
-      this.course = course;
-    })
+    const id = this.route.snapshot.paramMap.get(`id`);
+    console.log(id);
+    this.courseService.getCourseDetails(id)
+      .subscribe(courseResponse => this.course = courseResponse);
   }
-
-
 
 
 } // end of Component

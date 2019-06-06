@@ -3,5 +3,9 @@
 }
 
 .navbar {
-  background-image: linear-gradient(to right, orange, yellow);
+  background-image: radial-gradient(yellow, orange);
+}
+
+text  {
+  color: black;
 }

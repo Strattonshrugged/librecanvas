@@ -10,4 +10,11 @@ export class Course {
   enrollmentKey: string;
   assignments: Assignment[];
 
+  constructor(courseAbbreviation: string, courseTitle: string) {
+    this.courseAbbreviation = courseAbbreviation;
+    this.courseTitle = courseTitle;
+  }
+
+
+
 }

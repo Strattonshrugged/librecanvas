@@ -18,7 +18,7 @@
           <div *ngIf="f.password.errors.required">Password is required.</div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Sign in!</button>
+      <button type="submit" class="btn btn-primary loginButton" [disabled]="!loginForm.valid">Sign in!</button>
       <div *ngIf="error" class="alert alert-danger">{{error}}</div>
     </form>
   </div>

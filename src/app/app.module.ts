@@ -18,7 +18,7 @@ import { UserEditComponent } from './components/user/user-edit/user-edit.compone
 import { CreateCourseComponent } from './components/create-course/create-course.component';
 import { CourseService } from './services/course.service';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
-
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,9 @@ import { CourseDetailComponent } from './components/course-detail/course-detail.
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot([])
+
   ],
   providers: [
     AuthenticationService, 
@@ -48,3 +50,4 @@ import { CourseDetailComponent } from './components/course-detail/course-detail.
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
