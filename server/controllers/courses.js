@@ -1,11 +1,6 @@
 
+
 import Course from '../models/Course';
-
-/*var sendJSONresponse = function(res, status, content) {
-  res.status(status);
-  res.json(content);
-};*/
-
 
 export function addCourse(req, res) {
   if (!req.payload._id) {

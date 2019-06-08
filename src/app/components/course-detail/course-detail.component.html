@@ -1,8 +1,30 @@
 <!--<button *ngIf="!auth.isLoggedIn()" class="btn btn-primary hidden" type="button" routerLink="/login">Login</button>-->
 
-<div *ngIf="course">
-  <h3>Course Page  {{course.courseAbbreviation}}</h3>
-  <h5>{{course.courseTitle}}</h5>
+<div *ngIf="course" class="col-md-12">
+  <h5>Course Info</h5>
+  <div class="row">
+    <span class="col-md-4 offset-md-1">Course Abbreviation</span>
+    <span class="col-md-4">{{course.courseAbbreviation}}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-4 offset-md-1">Course Title</span>
+    <span class="col-md-4">{{course.courseTitle}}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-4 offset-md-1">Enrollment Key</span>
+    <span class="col-md-4">{{course.enrollmentKey}}</span>
+  </div>
+  <h5>Assignments</h5>
+  <ul class="assignments col-md-12">
+    <li *ngFor="let assignment of course.assignments">
+      {{assignment._id}}
+    </li>
+  </ul>
+  <h5>Students</h5>
+  <ul class="students col-md-12">
+    <li *ngFor="let student of course.students; index as i; trackBy: trackByFn">
+      {{course.students[i]}}
+    </li>
+  </ul>
 </div>
-
 

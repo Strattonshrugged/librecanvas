@@ -1,3 +1,5 @@
+
+
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 
@@ -21,9 +23,11 @@ var courseSchema = new mongoose.Schema({
   },
   students: {
     type: [String]
+  },
+  assignments: {
+    type: [String]
   }
 });
-
 
 
 courseSchema.statics.getAllCourses = courseSchema.statics.getInstructedCourses = function () {
@@ -41,16 +45,10 @@ courseSchema.statics.getInstructedCourses = function (inputID) {
 };
 
 courseSchema.statics.getEnrolledCourses = function (inputID)  {
-  // console.log('getEnrolledCourses has been called');
-  // console.log('Type Of ' + typeof inputID);
-  // console.log(inputID);
   return this.find({ 'students': inputID }).select('courseAbbreviation courseTitle').exec();
 }
 
 courseSchema.statics.getAllOtherCourses = function (inputID) {
-  // console.log('getEnrolledCourses has been called');
-  // console.log('Type Of ' + typeof inputID);
-  // console.log(inputID);
 
   return this.find(
     {
@@ -62,13 +60,14 @@ courseSchema.statics.getAllOtherCourses = function (inputID) {
   ).select('courseAbbreviation courseTitle').exec();
 }
 
+courseSchema.statics.getCourseDetails = function (inputID) {
+
+}
 /*
 userSchema.methods.validPassword = function(password) {
   var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
   return this.hash === hash;
 };
-
-
 */
 
 export default mongoose.model('Course', courseSchema);

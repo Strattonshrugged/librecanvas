@@ -6,9 +6,9 @@ export class Course {
   instructorID: string;
   courseAbbreviation: string;
   courseTitle: string;
-  students: string[];
   enrollmentKey: string;
-  assignments: Assignment[];
+  students: string[];
+  assignments: string[];
 
   constructor(courseAbbreviation: string, courseTitle: string) {
     this.courseAbbreviation = courseAbbreviation;
@@ -18,3 +18,4 @@ export class Course {
 
 
 }
+
