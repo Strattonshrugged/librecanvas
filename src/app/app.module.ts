@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+// import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -41,7 +42,6 @@ import { EnrollComponent } from './components/enroll/enroll.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([])
-
   ],
   providers: [
     AuthenticationService, 
