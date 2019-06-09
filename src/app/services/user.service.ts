@@ -44,4 +44,4 @@ export class UserService {
   }
 
 
-}
+} // end of UserService class

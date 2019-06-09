@@ -23,10 +23,9 @@ export class CourseDetailComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit() {
-    // this.course.courseAbbreviation = 'loading';
-    // this.course.courseTitle = 'loading';
-
     this.getCourseDetails();
+
+
   }
 
 

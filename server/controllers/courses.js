@@ -9,7 +9,6 @@ export function addCourse(req, res) {
     });
   } else {
     let course = new Course();
-    console.log(req.body)
     course.instructorID = req.payload._id;
     course.courseAbbreviation = req.body.abbreviation;
     course.courseTitle = req.body.title;
@@ -41,6 +40,28 @@ export function addCourse(req, res) {
 
   }
 } // end of allCourse
+
+export function enroll(req, res) {
+  if (!req.payload._id) {
+    res.status(401).json({
+      "message": "Unauthorized. ID not found in payload."
+    });
+  } else {
+    Course.addStudent(req.body.key, req.payload._id)
+      .then(result => {
+        res.status(200).json({
+          "message": "Student added"
+        })
+      })
+      .catch(function (err) {
+        console.log('got an error');
+        console.log(err);
+        res.status(404);
+      });
+  }
+} // end of enroll
+
+
 
 export function getAllCourses(req, res) {
   if (!req.payload._id) {
@@ -86,18 +107,17 @@ export function getCourseDetails(req, res) {
     } else {
       Course.findById(req.params.id)
         .then(result => {
-          res.status(200).json(
-            result
-          )
+          res.status(200).json(result)
+        })
         .catch(function (err) {
           console.log('got an error');
           console.log(err);
           res.status(404);
           res.json({});
         });
-      });
-  }
+    }
 }
+
 
 
 

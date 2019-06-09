@@ -29,17 +29,21 @@ var courseSchema = new mongoose.Schema({
   }
 });
 
+// Course.addStudent(student.key, req.payload._id)
+
+courseSchema.statics.addStudent = function (enrollmentKey, userID) {
+  return this.findOneAndUpdate(
+    { 'enrollmentKey': enrollmentKey },
+    { $push: { students: userID } })
+  .exec();
+};
 
 courseSchema.statics.getAllCourses = courseSchema.statics.getInstructedCourses = function () {
-  let matthew = this.find().exec();
-  return matthew;
+  let foo = this.find().exec();
+  return foo;
 };
 
 courseSchema.statics.getInstructedCourses = function (inputID) {
-  // this.find({ 'courseAbbreviation': 'Math 098' }, function (err, courses) {
-  // console.log('getInstructedCourses has been called');
-  // console.log('Type Of ' + typeof inputID);
-  // console.log(inputID);
 
   return this.find({ 'instructorID': inputID }).select('courseAbbreviation courseTitle').exec();
 };

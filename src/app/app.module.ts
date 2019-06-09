@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -19,6 +18,7 @@ import { CreateCourseComponent } from './components/create-course/create-course.
 import { CourseService } from './services/course.service';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { RouterModule, Routes } from '@angular/router';
+import { EnrollComponent } from './components/enroll/enroll.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { RouterModule, Routes } from '@angular/router';
     UserEditComponent,
     CoursesComponent,
     CreateCourseComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    EnrollComponent
   ],
   imports: [
     BrowserModule,

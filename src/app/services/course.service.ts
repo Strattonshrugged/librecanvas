@@ -12,11 +12,19 @@ export class CourseService {
   // readonly courseBaseUrl = 'http://localhost:4000/courses';
   constructor(private http: HttpClient) { }
 
+  addStudent(key: string) {
+    const student = {
+      key: key
+    }
+    return this.http.put('/api/courses/enroll', student,{ headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
+  };
+
+
+
   getAllCourses(): Observable<any> {
     return this.http.get('/api/courses/get-allCourses',
       { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
   };
-
 
   getCourseDetails(_id: string): Observable<Course> {
     // const url = `${this.courseBaseUrl}/${_id}`;
