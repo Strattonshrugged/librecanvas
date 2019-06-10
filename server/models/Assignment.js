@@ -1,23 +1,29 @@
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
-
+import Submission from './Submission';
 
 var assignmentSchema = new mongoose.Schema({
-  student: {
+  title: {
     type: String,
     required: true
   },
-  assignment: {
-    type: String,
-    required: true
+  description: {
+    type: Text
   },
-  content: {
-    type: String
+  visibility: {
+    type: boolean
   },
-  pointsGiven: {
+  dueDate: {
+    type: Date
+  },
+  pointValue: {
     type: number
+  },
+  submissions: {
+    type: [Submission]
   }
 });
 
 
 export default mongoose.model('Assignment', assignmentSchema);
+

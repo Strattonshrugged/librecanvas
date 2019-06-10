@@ -19,8 +19,6 @@ export class CourseService {
     return this.http.put('/api/courses/enroll', student,{ headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
   };
 
-
-
   getAllCourses(): Observable<any> {
     return this.http.get('/api/courses/get-allCourses',
       { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
@@ -33,6 +31,15 @@ export class CourseService {
     return this.http.get<Course>(url,
       { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
   };
+
+  addCourse(abbreviation: string, title: string, key: string) {
+    const course = {
+      abbreviation: abbreviation,
+      title: title,
+      key: key
+    }
+    return this.http.post(`/api/courses/create-course`, course, { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` } });
+  }
 
   // brought over from tour of heroes, hero.service; after http request ...
   // .pipe(catchError(this.handleError<Course>(`getCourseDetails id=${_id}`)))

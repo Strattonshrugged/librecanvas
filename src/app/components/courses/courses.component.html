@@ -23,15 +23,15 @@
 
   <h6 *ngIf="!isAdmin">All Other Courses</h6>
   <ul class="courses allOther">
+    <li class="course allOther">
+      <a routerLink="/create-course">
+        <span class="createCourse">CREATE A NEW COURSE</span>
+      </a>
+    </li>
     <li *ngFor="let course of allOtherCourses" class="course">
       <a routerLink="/courses/{{course._id}}">
         <span class="abbreviation">{{course.courseAbbreviation}}</span>
         <span class="title">{{course.courseTitle}}</span>
-      </a>
-    </li>
-    <li class="course allOther">
-      <a routerLink="/create-course">
-        <span class="createCourse">CREATE A COURSE</span>
       </a>
     </li>
   </ul>

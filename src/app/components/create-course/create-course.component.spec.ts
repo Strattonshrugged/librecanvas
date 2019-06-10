@@ -6,6 +6,7 @@ import { CreateCourseComponent } from './create-course.component';
 import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { CourseService } from '../../services/course.service';
 import { UserService } from '../../services/user.service';
 import { UserDetails } from '../../models/user';
 import { of } from 'rxjs';
@@ -19,6 +20,7 @@ describe('CreateCourseComponent', () => {
 
   beforeEach(async(() => {
     const fakeUserService = jasmine.createSpyObj('UserService', ['getAllUsers']);
+    // const fakeCourseService = jasmine.createSpyObj('CourseService', []);
     fakeUserService.getAllUsers.and.returnValue(of([{
       _id: '123',
       email: 'test@example.com',
@@ -34,7 +36,8 @@ describe('CreateCourseComponent', () => {
       declarations: [ CreateCourseComponent ],
       providers: [AuthenticationService,
         { provide: Router, useValue: fakeRouter },
-        { provide: UserService, useValue: fakeUserService }]
+        { provide: UserService, useValue: fakeUserService },
+      ]
     }
       )
     .compileComponents();

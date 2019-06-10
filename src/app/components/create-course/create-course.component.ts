@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../services/user.service';
+import { CourseService } from '../../services/course.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,9 @@ export class CreateCourseComponent implements OnInit {
   createCourseForm: FormGroup;
   error = '';
 
-  constructor(private userService: UserService, private router: Router, private fb: FormBuilder) {
+  constructor(
+    private courseService: CourseService,
+    private router: Router, private fb: FormBuilder) {
 
   }
 
@@ -34,7 +36,7 @@ export class CreateCourseComponent implements OnInit {
       return;
     }
 
-    this.userService.addCourse(
+    this.courseService.addCourse(
       this.createCourseForm.get('courseabbreviation').value,
       this.createCourseForm.get('coursetitle').value,
       this.createCourseForm.get('enrollmentkey').value
