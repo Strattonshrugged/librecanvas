@@ -15,7 +15,7 @@ var submissionSchema = new mongoose.Schema({
     type: String
   },
   pointsGiven: {
-    type: number
+    type: String
   }
 });
 

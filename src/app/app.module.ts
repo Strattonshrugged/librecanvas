@@ -20,6 +20,8 @@ import { CourseService } from './services/course.service';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { RouterModule, Routes } from '@angular/router';
 import { EnrollComponent } from './components/enroll/enroll.component';
+import { AssignmentComponent } from './components/assignment/assignment.component';
+import { CreateAssignmentComponent } from './components/create-assignment/create-assignment.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { EnrollComponent } from './components/enroll/enroll.component';
     CoursesComponent,
     CreateCourseComponent,
     CourseDetailComponent,
-    EnrollComponent
+    EnrollComponent,
+    AssignmentComponent,
+    CreateAssignmentComponent
   ],
   imports: [
     BrowserModule,

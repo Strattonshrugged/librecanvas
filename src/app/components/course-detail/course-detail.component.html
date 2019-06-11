@@ -33,13 +33,16 @@
     <h5>Assignments</h5>
     <ul class="assignments">
       <li class="course-detail allOther">
-        <a routerLink="/enroll">
+        <a routerLink="/create-assignment/{{course._id}}">
           <span class="course-detail">CREATE NEW ASSIGNMENT</span>
         </a>
       </li>
-      <li *ngFor="let assignment of course.assignments">
-        {{assignment._id}}
-      </li>
+
+      <li *ngFor="let assignment of course.assignments; index as i; trackBy: trackByFn" class="course-detail allOther">
+          <a routerLink="/assignment/{{course.assignments[i].id}}">
+            <span class="course-detail">{{course.assignments[i].title}}</span>
+          </a>      </li>
+
     </ul>
   </div>
 

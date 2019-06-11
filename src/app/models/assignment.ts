@@ -1,12 +1,13 @@
-import { Submission } from './submission';
 
 
 export interface Assignment {
-  assignmentTitle: string;
-  description: Text;
+  title: string;
+  task: Text;
+  courseID: string;
   visibility: boolean;
   dueDate: Date;
   pointValue: number;
+  submissions: object[];
 }
 
 

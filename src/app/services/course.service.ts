@@ -59,17 +59,4 @@ export class CourseService {
 
 };  // END OF COURSE SERVICE
 
-/*
-GET hero by id. Will 404 if id not found
-
-getHero(_id: string): Observable < Hero > {
-  const url = `${this.heroesUrl}/${_id}`;
-  return this.http.get<Hero>(url).
-    pipe(
-      tap(_ => this.log(`fetched hero id=${_id}`)),
-      catchError(this.handleError<Hero>(`getHero id=${_id}`))
-    );
-}
-*/
-
 

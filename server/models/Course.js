@@ -55,6 +55,19 @@ var courseSchema = new mongoose.Schema({
   }
 });
 
+courseSchema.statics.addAssignmentTag = function (courseID,assignmentTitle,assignmentID) {
+  return this.findOneAndUpdate({'_id': courseID},
+    { $push:
+      { assignments: 
+        {
+            'title': assignmentTitle,
+            'id': assignmentID
+        }
+      }
+    })
+  .exec()
+}
+
 courseSchema.statics.addStudent = function (enrollmentKey, userID, userName) {
   return this.findOneAndUpdate(
     // find a course with the same enrollment key

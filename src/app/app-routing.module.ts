@@ -14,6 +14,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { Role } from './models/role';
 import { EnrollComponent } from './components/enroll/enroll.component';
+import { AssignmentComponent } from './components/assignment/assignment.component';
+import { CreateAssignmentComponent } from './components/create-assignment/create-assignment.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'courses', component: CoursesComponent, canActivate: [AuthGuard] },
   { path: 'courses/:id', component: CourseDetailComponent, canActivate: [AuthGuard] },
   { path: 'create-course', component: CreateCourseComponent, canActivate: [AuthGuard] },
+  { path: 'assignment/:id', component: AssignmentComponent, canActivate: [AuthGuard] },
+  { path: 'create-assignment/:id', component: CreateAssignmentComponent, canActivate: [AuthGuard] },
   //{ path: 'profile/edit', component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminGuard], data: { roles: [Role.Admin] } },
   { path: 'users', component: AdminComponent, canActivate: [AuthGuard, AdminGuard], data: { roles: [Role.Admin] } },

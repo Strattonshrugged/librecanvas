@@ -1,27 +1,32 @@
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import Submission from './Submission';
+import { stringify } from 'querystring';
 
 var assignmentSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true
   },
-  description: {
-    type: Text
+  task: {
+    type: String
+  },
+  courseID: {
+    type: String,
+    required: true
   },
   visibility: {
-    type: boolean
+    type: String
   },
   dueDate: {
-    type: Date
+    type: String
   },
   pointValue: {
-    type: number
+    type: String
   },
-  submissions: {
-    type: [Submission]
-  }
+  submissions: [{
+    type: String
+  }]
 });
 
 
