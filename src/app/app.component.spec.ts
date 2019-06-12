@@ -11,13 +11,13 @@ import { UserDetails } from './models/user';
 import { of } from 'rxjs';
 
 describe('AppComponent', () => {
+  const fakeAuthenticationService = jasmine.createSpyObj('AuthenticationService', ['isLoggedIn', 'getUserDetails', 'logout']);
 
+  const fakeRouter = {
+    navigate: jasmine.createSpy('navigate')
+  }
 
   beforeEach(async(() => {
-
-    const fakeAuthenticationService = jasmine.createSpyObj('AuthenticationService', ['isLoggedIn']);
-    fakeAuthenticationService.isLoggedIn.and.returnValue(of(true));
-
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
@@ -27,8 +27,7 @@ describe('AppComponent', () => {
         AppComponent
       ],
       providers: [
-        // { AuthenticationService, useValue: fakeAuthenticationService }
-        AuthenticationService
+        { provide: AuthenticationService, useValue: fakeAuthenticationService }
       ]
     }).compileComponents();
   }));
@@ -36,23 +35,48 @@ describe('AppComponent', () => {
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
     expect(app).toBeTruthy();
   });
 
   it(`should have as title 'Librecanvas'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
     expect(app.title).toEqual('Librecanvas');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
     fixture.detectChanges();
     const compiled = fixture.debugElement.query(By.css('#title')).nativeElement;
 
     expect(compiled.textContent).toContain('Librecanvas');
-
   });
+
+
+  it('should logout when pushing logout button', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    fakeAuthenticationService.isLoggedIn.and.returnValue(of(true));
+    /*
+    fixture.detectChanges();
+
+
+    let buttonArray = fixture.debugElement.queryAll(By.css('.logoutButton'));
+    expect(buttonArray.length).toEqual(1);
+    let button = buttonArray[0].nativeElement;
+
+    expect(fakeAuthenticationService.logout).not.toHaveBeenCalled;
+    expect(fakeRouter.navigate).not.toHaveBeenCalled;
+    button.click();
+    fixture.detectChanges();
+    expect(fakeAuthenticationService.logout).toHaveBeenCalled;
+    expect(fakeRouter.navigate).toHaveBeenCalled;
+    */
+  }));
+  
 
 
 }); // END OF DESCRIBE

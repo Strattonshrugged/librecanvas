@@ -6,9 +6,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AuthGuard', () => {
 
-
-
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule, RouterTestingModule ],
@@ -19,9 +16,6 @@ describe('AuthGuard', () => {
   it('should ...', inject([AuthGuard], (guard: AuthGuard) => {
     expect(guard).toBeTruthy();
   }));
-
-
-
 
 
 });
