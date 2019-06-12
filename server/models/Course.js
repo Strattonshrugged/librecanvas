@@ -1,10 +1,16 @@
+
+
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
+
 
 var courseSchema = new mongoose.Schema({
   instructorID: {
     type: String,
     required: true
+  },
+  instructorName: {
+    type: String
   },
   courseAbbreviation: {
     type: String,
@@ -20,55 +26,88 @@ var courseSchema = new mongoose.Schema({
     unique: true
   },
   students: {
-    type: [String]
+    type: [
+      {
+        name: {
+          type: String,
+          required: true
+        },
+        id:    {
+            type: String,
+            required: true
+        }
+      }
+    ]
+  },
+  assignments: {
+    type: [
+      {
+        title: {
+          type: String,
+          required: true
+        },
+        id:    {
+            type: String,
+            required: true
+        }
+      }
+    ]
   }
 });
 
+courseSchema.statics.addAssignmentTag = function (courseID,assignmentTitle,assignmentID) {
+  return this.findOneAndUpdate({'_id': courseID},
+    { $push:
+      { assignments: 
+        {
+            'title': assignmentTitle,
+            'id': assignmentID
+        }
+      }
+    })
+  .exec()
+}
 
+courseSchema.statics.addStudent = function (enrollmentKey, userID, userName) {
+  return this.findOneAndUpdate(
+    // find a course with the same enrollment key
+    { 'enrollmentKey': enrollmentKey },
+    // push into students array a new StudentNameID object
+    { $push:
+      { students: 
+        {
+            'name': userName,
+            'id': userID
+        }
+      }
+    })
+  .exec()
+};
 
 courseSchema.statics.getAllCourses = courseSchema.statics.getInstructedCourses = function () {
-  let matthew = this.find().exec();
-  return matthew;
+  let foo = this.find().exec();
+  return foo;
 };
 
 courseSchema.statics.getInstructedCourses = function (inputID) {
-  // this.find({ 'courseAbbreviation': 'Math 098' }, function (err, courses) {
-  // console.log('getInstructedCourses has been called');
-  // console.log('Type Of ' + typeof inputID);
-  // console.log(inputID);
-
   return this.find({ 'instructorID': inputID }).select('courseAbbreviation courseTitle').exec();
 };
 
 courseSchema.statics.getEnrolledCourses = function (inputID)  {
-  // console.log('getEnrolledCourses has been called');
-  // console.log('Type Of ' + typeof inputID);
-  // console.log(inputID);
-  return this.find({ 'students': inputID }).select('courseAbbreviation courseTitle').exec();
+  return this.find({ 'students.id': inputID }).select('courseAbbreviation courseTitle').exec();
 }
 
-courseSchema.statics.getAllOtherCourses = function (inputID) {
-  // console.log('getEnrolledCourses has been called');
-  // console.log('Type Of ' + typeof inputID);
-  // console.log(inputID);
 
+courseSchema.statics.getAllOtherCourses = function (inputID) {
   return this.find(
     {
       $and: [
-        { 'students': { $nin: [inputID] } },
+        { 'students.id': { $nin: [inputID] } },
         { 'instructorID': { $ne: inputID } }
       ]
     }
-  ).select('courseAbbreviation courseTitle').exec();
+  ).select('courseAbbreviation courseTitle').exec()
 }
 
-/*
-userSchema.methods.validPassword = function(password) {
-  var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512').toString('hex');
-  return this.hash === hash;
-};
-
-
-*/
 
 export default mongoose.model('Course', courseSchema);

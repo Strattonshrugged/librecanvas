@@ -1,8 +1,61 @@
 <!--<button *ngIf="!auth.isLoggedIn()" class="btn btn-primary hidden" type="button" routerLink="/login">Login</button>-->
 
-<div *ngIf="course">
-  <h3>Course Page  {{course.courseAbbreviation}}</h3>
-  <h5>{{course.courseTitle}}</h5>
+<div *ngIf="course" class="col-md-12">
+  <h5>Course Info</h5>
+  <div class="row">
+    <span class="col-md-4 offset-md-1">Course Instructor</span>
+    <span class="col-md-4">{{course.instructorName}}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-4 offset-md-1">Course Abbreviation</span>
+    <span class="col-md-4">{{course.courseAbbreviation}}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-4 offset-md-1">Course Title</span>
+    <span class="col-md-4">{{course.courseTitle}}</span>
+  </div>
+  <div class="row">
+    <span class="col-md-4 offset-md-1">Enrollment Key</span>
+    <span class="col-md-4">{{course.enrollmentKey}}</span>
+  </div>
+
+  <div class="enrollHere"><!-- For non-teacher/-students -->
+    <ul class="enrollments">
+      <li class="course-detail allOther">
+        <a routerLink="/enroll">
+          <span class="course-detail">Enroll Now!</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="assignments"><!-- For students and teachers -->
+    <h5>Assignments</h5>
+    <ul class="assignments">
+      <li class="course-detail allOther">
+        <a routerLink="/create-assignment/{{course._id}}">
+          <span class="course-detail">CREATE NEW ASSIGNMENT</span>
+        </a>
+      </li>
+
+      <li *ngFor="let assignment of course.assignments; index as i; trackBy: trackByFn" class="course-detail allOther">
+          <a routerLink="/assignment/{{course.assignments[i].id}}">
+            <span class="course-detail">{{course.assignments[i].title}}</span>
+          </a>      </li>
+
+    </ul>
+  </div>
+
+  <div class="students"><!-- For teachers only -->
+    <h5>Students</h5>
+    <ul class="course-detail students">
+      <li *ngFor="let student of course.students; index as i; trackBy: trackByFn" class="course-detail">
+        <a routerLink="/{{course.students[i].id}}">
+          <span class="course-detail">{{course.students[i].name}}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 
 

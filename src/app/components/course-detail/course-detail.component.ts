@@ -23,16 +23,14 @@ export class CourseDetailComponent implements OnInit {
     private location: Location) { }
 
   ngOnInit() {
-    // this.course.courseAbbreviation = 'loading';
-    // this.course.courseTitle = 'loading';
-
     this.getCourseDetails();
+
+
   }
 
 
   getCourseDetails(): void {
     const id = this.route.snapshot.paramMap.get(`id`);
-    console.log(id);
     this.courseService.getCourseDetails(id)
       .subscribe(courseResponse => this.course = courseResponse);
   }

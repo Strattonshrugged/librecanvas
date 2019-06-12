@@ -1,20 +1,19 @@
-import { Assignment } from './assignment';
 
 
 export class Course {
   _id: string;
   instructorID: string;
+  instructorName: string;
   courseAbbreviation: string;
   courseTitle: string;
-  students: string[];
   enrollmentKey: string;
-  assignments: Assignment[];
+  students: object[];
+  assignments: object[];
 
   constructor(courseAbbreviation: string, courseTitle: string) {
     this.courseAbbreviation = courseAbbreviation;
     this.courseTitle = courseTitle;
   }
 
-
-
 }
+

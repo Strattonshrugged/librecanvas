@@ -7,5 +7,9 @@
 }
 
 text  {
-  color: black;
+  text-decoration-color: black;
+}
+
+.loggedInName {
+  padding-right: 2em;
 }

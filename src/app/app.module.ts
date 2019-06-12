@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
+// import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -19,6 +19,9 @@ import { CreateCourseComponent } from './components/create-course/create-course.
 import { CourseService } from './services/course.service';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
 import { RouterModule, Routes } from '@angular/router';
+import { EnrollComponent } from './components/enroll/enroll.component';
+import { AssignmentComponent } from './components/assignment/assignment.component';
+import { CreateAssignmentComponent } from './components/create-assignment/create-assignment.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { RouterModule, Routes } from '@angular/router';
     UserEditComponent,
     CoursesComponent,
     CreateCourseComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    EnrollComponent,
+    AssignmentComponent,
+    CreateAssignmentComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,6 @@ import { RouterModule, Routes } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([])
-
   ],
   providers: [
     AuthenticationService, 

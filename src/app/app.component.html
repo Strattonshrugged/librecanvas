@@ -12,10 +12,33 @@
       <li routerLinkActive="active" *ngIf="isAdmin"><a class="nav-link" routerLink="/admin">Users</a></li>
     </ul>
     <!--<button *ngIf="!auth.isLoggedIn()" class="btn btn-primary hidden" type="button" routerLink="/login">Login</button>-->
-    <button *ngIf="auth.isLoggedIn()" id="logoutButton" class="btn btn-primary logoutButton" type="button" (click)="logout()">Logout</button>
+    <div *ngIf="auth.isLoggedIn()">
+      <span class="loggedInName">Logged in as  {{lookupNameForNavbar()}}</span>
+      <button id="logoutButton" class="btn btn-primary logoutButton" type="button" (click)="logout()">Logout</button>
+    </div>
   </div>
 </nav>
 
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+
+
+<!--
+  nameOfLoggedIn(): string {
+    let username = "Apple Fritz";
+    return username;
+  }
+-->
+
+
+
+
+<!--
+  getUserById(id): Observable<any>{
+  return this.http.get(`/api/users/${}`, { headers: { Authorization: `Bearer ${localStorage.getItem('mean-token')}` }});
+  } and id goes api/users/righthere
+-->
+<!--
+5ce5ba3024b2a8343c46956a
+-->

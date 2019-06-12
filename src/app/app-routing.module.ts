@@ -13,16 +13,21 @@ import { UserEditComponent } from './components/user/user-edit/user-edit.compone
 import { AuthGuard } from './guards/auth.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { Role } from './models/role';
-
+import { EnrollComponent } from './components/enroll/enroll.component';
+import { AssignmentComponent } from './components/assignment/assignment.component';
+import { CreateAssignmentComponent } from './components/create-assignment/create-assignment.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'enroll', component: EnrollComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'courses', component: CoursesComponent, canActivate: [AuthGuard] },
   { path: 'courses/:id', component: CourseDetailComponent, canActivate: [AuthGuard] },
   { path: 'create-course', component: CreateCourseComponent, canActivate: [AuthGuard] },
+  { path: 'assignment/:id', component: AssignmentComponent, canActivate: [AuthGuard] },
+  { path: 'create-assignment/:id', component: CreateAssignmentComponent, canActivate: [AuthGuard] },
   //{ path: 'profile/edit', component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminGuard], data: { roles: [Role.Admin] } },
   { path: 'users', component: AdminComponent, canActivate: [AuthGuard, AdminGuard], data: { roles: [Role.Admin] } },

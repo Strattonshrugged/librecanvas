@@ -12,6 +12,7 @@ var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
 var ctrlAdmin = require('../controllers/admin');
 var ctrlCourses = require('../controllers/courses');
+var ctrlAssignments = require('../controllers/assignments');
 
 // profile
 router.get('/profile', auth, ctrlProfile.profileRead);
@@ -27,9 +28,14 @@ router.post('/users/edit/:id', auth, ctrlAdmin.editUser);
 router.get('/users/delete/:id', auth, ctrlAdmin.deleteUser);
 
 // courses
-router.post('/users/create-course', auth, ctrlCourses.addCourse);
+router.post('/courses/create-course', auth, ctrlCourses.addCourse);
+router.put('/courses/enroll', auth, ctrlCourses.enroll);
 router.get('/courses/get-allCourses', auth, ctrlCourses.getAllCourses);
 router.get('/courses/:id', auth, ctrlCourses.getCourseDetails);
+
+// assignments
+router.post('/create-assignment', auth, ctrlAssignments.addAssignment);
+router.get('/assignment/:id', auth, ctrlAssignments.getAssignment);
 
 export default router;
 

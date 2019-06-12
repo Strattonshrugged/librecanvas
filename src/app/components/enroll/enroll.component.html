@@ -1,0 +1,19 @@
+<div class="col-md-6">
+  <h1>Enroll</h1>
+  <form [formGroup]="enrollmentForm" (ngSubmit)="enroll()">
+
+    <div class="form-group">
+      <label for="enrollmentkey">Enter Course Enrollment Key Here</label>
+      <input id="enrollmentkey" name="enrollmentkey" type="text" class="form-control" formControlName="enrollmentkey" placeholder="Enrollment Key">
+      <div *ngIf="f.enrollmentkey.invalid && (f.enrollmentkey.dirty || f.enrollmentkey.touched)" class="alert alert-danger">
+        <div *ngIf="f.enrollmentkey.errors.required">Enrollment Key is required.</div>
+        <div *ngIf="f.enrollmentkey.errors.minlength">Enrollment Key must be at least 4 characters</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary submitButton" [disabled]="!enrollmentForm.valid">Submit!</button>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  </form>
+</div>
+
+

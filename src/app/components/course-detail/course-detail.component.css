@@ -1,0 +1,29 @@
+.course-detail {
+  list-style-type: none;
+}
+
+.course-detail li {
+  position: relative;
+}
+
+.course-detail a {
+  position: relative;
+  text-decoration: none;
+  background-color: orange;
+  transition: 0.3s;
+  padding: .2em .5em .2em .5em;
+  margin: .3em;
+  display: block;
+  border-radius: 4px;
+  color: black;
+}
+
+.course-detail a:hover {
+  background-color: yellow;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.course-detail span {
+  padding: 0 .5em 0 .5em;
+}
